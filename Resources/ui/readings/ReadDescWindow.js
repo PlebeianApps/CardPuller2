@@ -1,6 +1,8 @@
 //function ReadDescWindow(defaultTitle) {
-function ReadDescWindow(defaultTitle, defaultDescrip, defaultNumCards) {
+function ReadDescWindow(parentWindow, defaultTitle, defaultDescrip, defaultNumCards, cardDescrips) {
     
+    	var ReadCardLayout = require('ui/readings/ReadCardLayout');
+    	
         var window = Ti.UI.createWindow({
             backgroundColor: 'white',
             title : defaultTitle
@@ -25,18 +27,22 @@ function ReadDescWindow(defaultTitle, defaultDescrip, defaultNumCards) {
            width: Ti.UI.FILL,
            height: Ti.UI.SIZE //wraps button to size of text
         });//create button
+        button.addEventListener('click', function(e){
+        	var cardLayout = new ReadCardLayout(defaultTitle, defaultNumCards, cardDescrips);
+        	parentWindow.containingTab.open(cardLayout);
+        });;
         
-        var l1 = Titanium.UI.createLabel({
-            //text: 'Default Number of Cards',
-            text: defaultNumCards,
+        var numberLabel = Titanium.UI.createLabel({
+            top: 10,
+            text: defaultNumCards + ' Card Reading',
             height:Ti.UI.SIZE,
             color:'#900',
-            font:{fontSize:48},
+            font:{fontSize:30},
             textAlign:'center'
         });
         
-        var l2 = Titanium.UI.createLabel({
-            //text: 'Default Description',
+        var descripLabel = Titanium.UI.createLabel({
+            top: 10,
             text: defaultDescrip,
             height:Ti.UI.SIZE,
             color:'#900',
@@ -45,8 +51,8 @@ function ReadDescWindow(defaultTitle, defaultDescrip, defaultNumCards) {
         });//create labels
         
         view.add(button);
-        view.add(l1);
-        view.add(l2); 
+        view.add(numberLabel);
+        view.add(descripLabel); 
         scroll.add(view);//add view to scroll
         window.add(scroll);//add scroll to window
     	

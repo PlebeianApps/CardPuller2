@@ -1,19 +1,19 @@
-function ListWindow(title) {
+function ReadList(title) {
 	
 		var window = Ti.UI.createWindow({
 			title: title,
 			backgroundColor: 'white'
 		});
 		
-		var TabWindow = require('ui/TabWindow');
-        var ReadDescWindow = require('ui/ReadDescWindow');
+		//var TabWindow = require('ui/TabWindow');
+        var ReadDescWindow = require('ui/readings/ReadDescWindow');
         var CardData = require('db/CardData');
         		
-		var readingDescription = new TabWindow('Reading Title');
-		var readingCards = new TabWindow('Reading Cards');
+		//var readingDescription = new TabWindow('Reading Title');
+		//var readingCards = new TabWindow('Reading Cards');
 		
 		
-	    var tbl_data = new CardData().getData();
+	    var tbl_data = new CardData().getReadingsData();
 		/* var tbl_data = [
     		{title:'Row 1'},
 		    {title:'Row 2'},
@@ -29,7 +29,8 @@ function ListWindow(title) {
 		table.addEventListener('click', function(e) {
 			// this fireEvent crashed Android
 			//Ti.API.fireEvent('updateDesc',{title: e.rowData.title, description: e.rowData.descrip, numberCards: e.rowData.numberCards});
-			var readings = new ReadDescWindow(e.rowData.title, e.rowData.descrip, e.rowData.numberCards);
+			var cardDescrips = [e.rowData.card1descrip, e.rowData.card2descrip, e.rowData.card3descrip, e.rowData.card4descrip];
+			var readings = new ReadDescWindow(window, e.rowData.title, e.rowData.descrip, e.rowData.numberCards, cardDescrips);
 			window.containingTab.open(readings);
 		});
 		
@@ -39,4 +40,4 @@ function ListWindow(title) {
 		return window;
 };
 
-module.exports = ListWindow;
+module.exports = ReadList;

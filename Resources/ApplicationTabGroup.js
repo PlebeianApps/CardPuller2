@@ -1,18 +1,15 @@
 function ApplicationTabGroup() {
 	//declare module dependencies
-	//var AppWindow = require('ui/AppWindow');
 	var WindowGroup = require('ui/WindowGroup');
 	
 	//create module instance
 	var self = Ti.UI.createTabGroup();
 	
 	//create app tabs
-	//var win1 = new AppWindow(L('home')),
-	//	win2 = new AppWindow(L('settings'));
-	var win1 = new WindowGroup('readings'),
-		win2 = new WindowGroup('deck');
-		win3 = new WindowGroup('history');
-		win4 = new WindowGroup('info');
+	var win1 = new WindowGroup('readings');
+	var	win2 = new WindowGroup('deck');
+	//var	win3 = new WindowGroup('history');
+	var	win4 = new WindowGroup('info');
 	
 	var tab1 = Ti.UI.createTab({
 		title: 'Readings',
@@ -28,12 +25,14 @@ function ApplicationTabGroup() {
 	});
 	win2.containingTab = tab2;
 	
+	/*
 	var tab3 = Ti.UI.createTab({
 		title: 'History',
 		icon: '/images/KS_nav_views.png',
 		window: win3
 	});
 	win3.containingTab = tab3;
+	*/
 	
 	var tab4 = Ti.UI.createTab({
 		title: 'Info',
@@ -44,7 +43,7 @@ function ApplicationTabGroup() {
 	
 	self.addTab(tab1);
 	self.addTab(tab2);
-	self.addTab(tab3);
+	//self.addTab(tab3);
 	self.addTab(tab4);	
 	return self;
 };

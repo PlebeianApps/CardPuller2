@@ -8,8 +8,8 @@ function CardData() {
 		//this.db = Ti.Database.install('/db/cardDb.sqlite', 'cardDb');
 		
     	this.db = Ti.Database.install('/db/cardDb.sqlite', 'cardDb');
-		//this.db.remove(); //Use this line if you need to remove and reinstall the db
-		//this.db = Ti.Database.install('/db/cardDb.sqlite', 'cardDb'); // here too
+		this.db.remove(); //Use this line if you need to remove and reinstall the db
+		this.db = Ti.Database.install('/db/cardDb.sqlite', 'cardDb'); // here too
     
     	/*
         this.db = Ti.Database.open('cardDb'); //create database //open database
@@ -26,18 +26,23 @@ function CardData() {
         */
 };
 
-CardData.prototype.getData = function(){
+CardData.prototype.getReadingsData = function(){
     this.db = Ti.Database.open('cardDb');
     //this.db.open('cardDb');//open database
     //get data
     var rows = this.db.execute('SELECT * FROM READINGS');
     var data = [];
     while(rows.isValidRow()) {
+    	
         data.push({
             id: rows.fieldByName("ID"),
             title: rows.fieldByName("TITLE"),
             descrip: rows.fieldByName("DESCRIPTION"), // "description" is a reserved TableView keyword
             numberCards: rows.fieldByName("NUMBERCARDS"),
+            card1descrip: rows.fieldByName("CARD1DESCRIP"),
+            card2descrip: rows.fieldByName("CARD2DESCRIP"),
+            card3descrip: rows.fieldByName("CARD3DESCRIP"),
+            card4descrip: rows.fieldByName("CARD4DESCRIP"),
             color: 'black'
         });
         rows.next();

@@ -10,7 +10,7 @@ function NavButton (title) {
 
 function WindowGroup(title) {
 	var TabWindow = require('ui/TabWindow');
-	var ListWindow = require('ui/ListWindow');
+	var ListWindow = require('ui/readings/ReadList');
 	
 	function EventListener(button,parent,child){
 		button.addEventListener('click', function() {
