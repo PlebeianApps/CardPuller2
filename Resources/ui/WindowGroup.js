@@ -10,7 +10,8 @@ function NavButton (title) {
 
 function WindowGroup(title) {
 	var TabWindow = require('ui/TabWindow');
-	var ListWindow = require('ui/readings/ReadList');
+	var ReadList = require('ui/readings/ReadList');
+	var DeckList = require('ui/deck/DeckList');
 	
 	function EventListener(button,parent,child){
 		button.addEventListener('click', function() {
@@ -19,7 +20,8 @@ function WindowGroup(title) {
 		};
 	
 	if (title === 'readings'){
-		var readings = new ListWindow('Readings');
+		var readings = new ReadList('Readings');
+		/*
 		var readingDescription = new TabWindow('Reading Title');
 		var readingCards = new TabWindow('Reading Cards');
 		var notes = new TabWindow('Notes');
@@ -32,14 +34,16 @@ function WindowGroup(title) {
 		//EventListener(buttonReadings,readings,readingDescription);
 		EventListener(buttonReadingDescription,readings,readingCards);
 		EventListener(buttonReadingCards,readings,notes);
-
+	*/
 		return readings;
 	} else if (title === 'deck'){
+		var deck = new DeckList('Deck');
+		/*
 		var deck = new TabWindow('Deck');
 		var color = new TabWindow('Color');
 		var buttonDeck = new NavButton('Colors');
 		deck.add(buttonDeck);
-		EventListener(buttonDeck,deck,color);
+		EventListener(buttonDeck,deck,color); */
 		return deck;
 	} else if (title === 'history'){
 		var history = new TabWindow('History');

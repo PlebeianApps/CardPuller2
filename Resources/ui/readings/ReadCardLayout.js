@@ -17,7 +17,7 @@ function ReadCardLayout(title, numberCards, cardDescrips)
 		//Ti.API.info('card description is ' + cardDescrips[i]);
 		// create a View, add a label and an image view with a default image for now
 		var view = Titanium.UI.createView({
-			contentHeight:'auto',
+			//contentHeight:'auto', // do we need this?
             top:0,
             width: '80%',
             height: '100%',
@@ -36,7 +36,7 @@ function ReadCardLayout(title, numberCards, cardDescrips)
 			top: 10,
 			//height: 200,
 			//width: 100,
-			height: '60%',
+			height: '55%',
 			image: '/images/BACKOFCARD.png'
 		});
 		var descripLabel = Ti.UI.createLabel({

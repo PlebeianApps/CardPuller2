@@ -9,10 +9,6 @@ function ReadList(title) {
         var ReadDescWindow = require('ui/readings/ReadDescWindow');
         var CardData = require('db/CardData');
         		
-		//var readingDescription = new TabWindow('Reading Title');
-		//var readingCards = new TabWindow('Reading Cards');
-		
-		
 	    var tbl_data = new CardData().getReadingsData();
 		/* var tbl_data = [
     		{title:'Row 1'},
@@ -33,7 +29,6 @@ function ReadList(title) {
 			var readings = new ReadDescWindow(window, e.rowData.title, e.rowData.descrip, e.rowData.numberCards, cardDescrips);
 			window.containingTab.open(readings);
 		});
-		
 		
 		window.add(table);
 		
