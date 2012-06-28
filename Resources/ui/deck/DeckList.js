@@ -6,7 +6,10 @@ function DeckList(title) {
 	var DeckInfoCardsWindow = require('ui/deck/DeckInfoCardsWindow');
 	var window = new TabWindow(title);
 	
-	var tbl_data = [
+	var CardData = require('db/CardData');
+    var tableData = new CardData().getColorGroupsData();
+	/*
+	var tableData = [
     	{title:'Yellow Cards', color:'black', 
     		descrip: 'Yellow Cards are Awesome'},
 		{title:'Gold Cards', color: 'black',
@@ -14,9 +17,10 @@ function DeckList(title) {
 		{title:'Purple Cards', color: 'black',
 			descrip: 'Purple Cards are Awesome'}
 	]; 
+	*/
 		
 	var table = Titanium.UI.createTableView({
-			data:tbl_data
+			data:tableData
 	});
 		
 	var infoCardsWindow;
@@ -26,6 +30,9 @@ function DeckList(title) {
 		//Ti.API.fireEvent('updateDesc',{title: e.rowData.title, description: e.rowData.descrip, numberCards: e.rowData.numberCards});
 		//var cardDescrips = [e.rowData.card1descrip, e.rowData.card2descrip, e.rowData.card3descrip, e.rowData.card4descrip];
 		//var readings = new ReadDescWindow(window, e.rowData.title, e.rowData.descrip, e.rowData.numberCards, cardDescrips);
+		
+		infoCardsWindow = new DeckInfoCardsWindow(window, e.rowData.title, e.rowData.colorcards, e.rowData.descrip);
+		/*
 		if (e.rowData.title === 'Yellow Cards')
 		{
 			infoCardsWindow = new DeckInfoCardsWindow(window,'Yellow', e.rowData.descrip);
@@ -38,6 +45,7 @@ function DeckList(title) {
 		{
 			infoCardsWindow = new DeckInfoCardsWindow(window, 'Purple', e.rowData.descrip);
 		}
+		*/
 		window.containingTab.open(infoCardsWindow);
 	});
 		

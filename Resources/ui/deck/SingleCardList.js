@@ -4,21 +4,15 @@
 function SingleCardList(parentWindow, title, image) {
 	var TabWindow = require('ui/TabWindow');
 	var window = new TabWindow(title, image);
-	//var window = new TabWindow(title);
-	
-	/*
-	var opaqueView = Ti.UI.createImageView({
-		//width: Ti.UI.FILL,
-		//height: Ti.UI.FILL,
-		image: image,
-		opacity: '.5'
-	});
-	*/
-	
 	var SingleCardDetail = require('ui/deck/SingleCardDetail');
 	var singleCardDetail;
 	
-	var tbl_data = [
+	var CardData = require('db/CardData');
+	var tableData = new CardData().getSingleCardData(title);
+	
+	//Ti.API.info('Length of cardData is ' + tableData);
+	/*
+	var table_data = [
     	{title:'About the Color', color:'black', 
     		descrip: 'About the Color is Awesome'},
 		{title:'Story', color: 'black',
@@ -26,9 +20,10 @@ function SingleCardList(parentWindow, title, image) {
 		{title:'Inspiration', color: 'black',
 			descrip: 'Inspiration is Awesome'}
 	]; 
+	*/
 		
 	var table = Titanium.UI.createTableView({
-			data: tbl_data,
+			data: tableData,
 			backgroundColor: 'transparent',
 			//opacity: 1
 			//backgroundImage: image
@@ -39,10 +34,9 @@ function SingleCardList(parentWindow, title, image) {
 	table.addEventListener('click', function(e) {
 		// note: don't use fireEvents here. They crash Android
 		//Ti.API.fireEvent('updateDesc',{title: e.rowData.title, description: e.rowData.descrip, numberCards: e.rowData.numberCards});
-		singleCardDetail = new SingleCardDetail(e.rowData.title, e.rowData.descrip, image);	
+		singleCardDetail = new SingleCardDetail(e.rowData.title, e.rowData.content, image, e.rowData.audio);	
 		parentWindow.containingTab.open(singleCardDetail);
 	});
-	//window.add(opaqueView);
 	window.add(table);
 	return window;
 };

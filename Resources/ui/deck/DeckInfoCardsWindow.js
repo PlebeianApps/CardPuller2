@@ -1,27 +1,29 @@
 /**
  * @author Vui Nguyen
  */
-function DeckInfoCardsWindow(parentWindow, title, descrip) {
+function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 	//var TabWindow = require('ui/TabWindow');
 	//var window = new TabWindow(title);
 	
+	//var color = colorGroupName.slice(0, colorGroupName.length - 6); // remove the word "Cards"
 	var window = Ti.UI.createWindow({
-			title: title,
+			title: color,
 			backgroundColor: 'white',
 			layout: 'vertical'
 		});
-		
+	
+	/*	
 	var scrollView =  Ti.UI.createScrollView({
             contentHeight:'auto',
             top:0,
             showVerticalScrollIndicator:true,
             width: '90%'
         }); //create scroll view
-        
+    */    
 	var InfoView = require('ui/deck/InfoView');
     var infoView = new InfoView(descrip);
     var CardsView = require('ui/deck/CardsView');
-    var cardsView = new CardsView(parentWindow);
+    var cardsView = new CardsView(parentWindow, color);
     
 	var platform = Ti.Platform.osname;
         

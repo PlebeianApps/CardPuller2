@@ -1,21 +1,11 @@
 /**
  * @author Vui Nguyen
  */
-function SingleCardWindow(parentWindow)
+function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTransparent)
 {
-	// we might not need the parentWindow anymore
-	
 	var TabWindow = require('ui/TabWindow');
-	var backgroundImageLoc = 'images/BACKOFCARD.png';
-	var windowTitle = 'Single Card';
-	var window = new TabWindow(windowTitle, backgroundImageLoc);
-		
+	var window = new TabWindow(windowTitle, imageLoc);	
 	var SingleCardList = require('ui/deck/SingleCardList');
-	/*
-	var cardView = Ti.UI.createView({
-		//backgroundImage: '/images/BACKOFCARD.png',
-	});
-	*/
 	
 	var image = Ti.UI.createImageView({
 		image: '/images/KS_nav_views.png',
@@ -25,7 +15,7 @@ function SingleCardWindow(parentWindow)
 	});
 	image.addEventListener('click', function(e) {
 		// have window add another view on top of view
-		parentWindow.containingTab.open(new SingleCardList(parentWindow, windowTitle, backgroundImageLoc));
+		parentWindow.containingTab.open(new SingleCardList(parentWindow, windowTitle, imageLocTransparent));
 	});
 	 
 	// at this point, do we want these to be windows or views?
