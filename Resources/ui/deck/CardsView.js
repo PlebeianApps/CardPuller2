@@ -12,7 +12,7 @@ function CardsView(parentWindow, colorOfCards) {
 		});
 		
 		var CardData = require('db/CardData');
-    	var cardArray = new CardData().getCardsData(colorOfCards + ' Cards');
+    	var cardArray = new CardData().getCardsByGroupName(colorOfCards + ' Cards');
     	var cardLocations = [];
     	var cardLocationsTransparent = [];
     	var cardTitles = [];
@@ -83,9 +83,9 @@ function CardsView(parentWindow, colorOfCards) {
         			for (k = 0; k < cardsPerRow; k++)
         			{
         				if (i === numCards) { break; }
-        				var title = cardTitles[i];
-        				var imageTransparent = cardLocationsTransparent[i];
-        				var imageLoc = cardLocations[i];
+        				//var title = cardTitles[i];
+        				//var imageTransparent = cardLocationsTransparent[i];
+        				//var imageLoc = cardLocations[i];
         				var image = Ti.UI.createImageView({
 							width: '30%',
 							//height: Ti.UI.FILL, // this is the line that ensures all images will be
@@ -93,13 +93,16 @@ function CardsView(parentWindow, colorOfCards) {
 							//height: '100%',	// this line will only work for iPhone
 							height: (platform === 'android') ? Ti.UI.FILL : '100%',
 							//image: '/images/BACKOFCARD.png',
-							image: imageLoc,
+							image: cardLocations[i],
 							left: '3%',
+							customTitle: cardTitles[i], // custom property
+							customImageTransparent: cardLocationsTransparent[i] // custom property
 							//opacity: '.5' // let's play with this
 						}); 
 						image.addEventListener('click', function(e){
 							parentWindow.containingTab.open(
-								new SingleCardWindow(parentWindow, title, imageLoc, imageTransparent));
+								//new SingleCardWindow(parentWindow, title, imageLoc, imageTransparent));
+								new SingleCardWindow(parentWindow, e.source.customTitle, e.source.image, e.source.customImageTransparent));
 						});
         				row.add(image); i++; 
         			}	// end k < cardsPerRow

@@ -1,12 +1,20 @@
 //function ReadDescWindow(defaultTitle) {
-function ReadDescWindow(parentWindow, defaultTitle, defaultDescrip, defaultNumCards, cardDescrips) {
+function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, cardDescrips) {
+    	Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
+		var flipSound = Ti.Media.createSound({
+				url: '/audio/CardFlip.mp3',
+				preload: true
+		});
+		var shuffleSound = Ti.Media.createSound({
+				url: '/audio/CardShuffle.mp3',
+				preload: true,
+				looping: true,
+				allowBackground: true
+		});
     
     	var ReadCardLayout = require('ui/readings/ReadCardLayout');
-    	
-        var window = Ti.UI.createWindow({
-            backgroundColor: 'white',
-            title : defaultTitle
-        }); //create window
+    	var TabWindow = require('ui/TabWindow');
+		var window = new TabWindow(currentTitle);
         
         var scroll =  Ti.UI.createScrollView({
             contentHeight:'auto',
@@ -28,13 +36,27 @@ function ReadDescWindow(parentWindow, defaultTitle, defaultDescrip, defaultNumCa
            height: Ti.UI.SIZE //wraps button to size of text
         });//create button
         button.addEventListener('click', function(e){
-        	var cardLayout = new ReadCardLayout(defaultTitle, defaultNumCards, cardDescrips);
-        	parentWindow.containingTab.open(cardLayout);
-        });;
+        	// play shuffle sound and then flip sound for every card dealt
+        	// shuffle sound plays while we're still drawing random cards for the array
+        	// hence, shuffle sound is playing in the RnadomCardSet call
+        	var RandomCardSet = require('ui/readings/RandomCardSet');
+        	var cardSet = new RandomCardSet(numCards);
+        	
+			var timeout = 600; // timeout in milliseconds
+			for (var i = 0; i < numCards; i++)
+			{
+				// make sure you delay long enough for the shuffling to take place
+				setTimeout(function(){flipSound.play()}, timeout*(i+1));
+			}
+        	//var cardLayout = new ReadCardLayout(parentWindow, currentTitle, numCards, cardDescrips);
+        	var cardLayout = new ReadCardLayout(parentWindow, currentTitle, cardSet, cardDescrips);
+        	setTimeout(function(){parentWindow.containingTab.open(cardLayout);}, (timeout*numCards));
+        	//parentWindow.containingTab.open(cardLayout);
+        });
         
         var numberLabel = Titanium.UI.createLabel({
             top: 10,
-            text: defaultNumCards + ' Card Reading',
+            text: numCards + ' Card Reading',
             height:Ti.UI.SIZE,
             color:'#900',
             font:{fontSize:30},
@@ -43,7 +65,7 @@ function ReadDescWindow(parentWindow, defaultTitle, defaultDescrip, defaultNumCa
         
         var descripLabel = Titanium.UI.createLabel({
             top: 10,
-            text: defaultDescrip,
+            text: currentDescrip,
             height:Ti.UI.SIZE,
             color:'#900',
             font:{fontSize:24},

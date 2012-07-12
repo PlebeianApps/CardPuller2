@@ -32,7 +32,6 @@ CardData.prototype.getReadingsData = function(){
     var rows = this.db.execute('SELECT * FROM READINGS');
     var data = [];
     while(rows.isValidRow()) {
-    	
         data.push({
             id: rows.fieldByName("ID"),
             title: rows.fieldByName("TITLE"),
@@ -56,7 +55,6 @@ CardData.prototype.getColorGroupsData = function() {
     var rows = this.db.execute('SELECT * FROM COLORGROUPS');
     var data = [];
     while(rows.isValidRow()) {
-    	
         data.push({
             id: rows.fieldByName("ID"),
             title: rows.fieldByName("GROUPNAME"),
@@ -70,13 +68,12 @@ CardData.prototype.getColorGroupsData = function() {
     return data; //return data
 };
 
-CardData.prototype.getCardsData = function(colorGroupName) {
+CardData.prototype.getCardsByGroupName = function(colorGroupName) {
 	this.db = Ti.Database.open('cardDb'); //open database
     //get data
     var rows = this.db.execute('SELECT * FROM CARDS WHERE COLORGROUPNAME = ?', colorGroupName);
     var data = [];
     while(rows.isValidRow()) {
-    	
         data.push({
         	cardName: rows.fieldByName("CARDNAME"),
         	cardLoc: rows.fieldByName("IMAGE"),
@@ -88,6 +85,27 @@ CardData.prototype.getCardsData = function(colorGroupName) {
     return data; //return data
 };
 
+CardData.prototype.getCardsByIndex = function(cardSet) {
+	this.db = Ti.Database.open('cardDb'); //open database
+    //get data
+    var cardSetLength = cardSet.length;
+    var data = [], rows;
+    for (var i = 0; i < cardSetLength; i++)
+    {
+    	rows = this.db.execute('SELECT * FROM CARDS WHERE ID = ? LIMIT 1', cardSet[i]);
+    	while(rows.isValidRow()) {
+        data.push({
+        	cardName: rows.fieldByName("CARDNAME"),
+        	cardLoc: rows.fieldByName("IMAGE"),
+        	cardLocTransparent: rows.fieldByName("IMAGETRANSPARENT")
+        });
+        rows.next();
+    	}
+    }
+    this.db.close();
+    return data; //return data
+	
+};
 
 CardData.prototype.getSingleCardData = function(cardName) {
 	this.db = Ti.Database.open('cardDb'); //open database
@@ -96,7 +114,6 @@ CardData.prototype.getSingleCardData = function(cardName) {
     var rows = this.db.execute('SELECT * FROM CARDSECTIONS WHERE CARDNAME = ?', cardName);
     var data = [];
     while(rows.isValidRow()) {
-    	
         data.push({
             id: rows.fieldByName("ID"),
             title: rows.fieldByName("SECTIONTITLE"),
@@ -110,6 +127,18 @@ CardData.prototype.getSingleCardData = function(cardName) {
     return data; //return data
 };
 
+CardData.prototype.getDeckSize = function() {
+	this.db = Ti.Database.open('cardDb');
+	var rows = this.db.execute('SELECT COUNT(*) AS NUMCARDS FROM CARDS');
+	var data = [];
+	while(rows.isValidRow())
+	{
+		data.push(rows.fieldByName("NUMCARDS"));
+		rows.next();
+	}
+	this.db.close();
+	return data;
+};
 
 module.exports = CardData;
 

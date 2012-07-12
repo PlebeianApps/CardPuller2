@@ -4,12 +4,25 @@
 function SingleCardDetail(title, content, image, audio) {
 	//var TabWindow = require('ui/TabWindow');
 	//var window = TabWindow(title, image);
+	//Ti.API.info('The value of audio is ' + audio);
+    //Ti.Media.createAudioPlayer({ url: 'https://fleetcreature.basecamphq.com/projects/9058309/file/112960605/KellytheGreenDragon-Color.mp3'});
+    Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
+    var sound = Titanium.Media.createSound({
+    	url: audio,
+    	preload: true,
+    	allowBackground: false
+    });
+    
 	var window = Ti.UI.createWindow({
 			title: title,
 			//backgroundColor: 'white',
 			backgroundImage: image,
 			layout: 'vertical'
 		});
+		
+	window.addEventListener('blur', function(e){
+		sound.stop();
+	});
 		
 	var scrollView =  Ti.UI.createScrollView({
             contentHeight:'auto',
@@ -36,17 +49,7 @@ function SingleCardDetail(title, content, image, audio) {
         });;
         */
     
-    //Ti.API.info('The value of audio is ' + audio);
-    //Ti.Media.createAudioPlayer({ url: 'https://fleetcreature.basecamphq.com/projects/9058309/file/112960605/KellytheGreenDragon-Color.mp3'});
     
-    // Important: As of June 27, 2012, Titanium Mobile API 2.0.2GA2
-    // did not seem to recognize the Media function calls; So, had to 
-    // downgrade to Titanium Mobile API 2.0.1GA2 for this to work
-    Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
-    var sound = Titanium.Media.createSound({
-    	url: audio,
-    	preload: true
-    });
     
     var platform = Ti.Platform.osname;   
     if (platform === 'android')
