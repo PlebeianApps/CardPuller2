@@ -58,7 +58,7 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
             top: 10,
             text: numCards + ' Card Reading',
             height:Ti.UI.SIZE,
-            color:'#900',
+            color:'#E6E6E6',
             font:{fontSize:30},
             textAlign:'center'
         });
@@ -67,7 +67,7 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
             top: 10,
             text: currentDescrip,
             height:Ti.UI.SIZE,
-            color:'#900',
+            color:'#E6E6E6',
             font:{fontSize:24},
             textAlign:'center'
         });//create labels

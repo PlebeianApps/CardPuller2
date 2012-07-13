@@ -2,7 +2,8 @@ function ReadList(title) {
 	
 		var window = Ti.UI.createWindow({
 			title: title,
-			backgroundColor: 'white'
+			backgroundColor: 'black',
+			barColor: '#262626'
 		});
 		
 		//var TabWindow = require('ui/TabWindow');

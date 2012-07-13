@@ -8,8 +8,9 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 	//var color = colorGroupName.slice(0, colorGroupName.length - 6); // remove the word "Cards"
 	var window = Ti.UI.createWindow({
 			title: color,
-			backgroundColor: 'white',
-			layout: 'vertical'
+			backgroundColor: 'black',
+			layout: 'vertical',
+			barColor: '#262626'
 		});
 	
 	/*	

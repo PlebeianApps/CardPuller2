@@ -2,7 +2,8 @@ function TabWindow(title, image, opacity) {
 	
 		var window = Ti.UI.createWindow({
 			title: title,
-			backgroundColor: 'white'
+			backgroundColor: 'black',
+			barColor: '#262626'
 		});
 		
 		if (image)
