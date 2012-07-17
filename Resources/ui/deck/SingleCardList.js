@@ -9,18 +9,6 @@ function SingleCardList(parentWindow, title, image) {
 	
 	var CardData = require('db/CardData');
 	var tableData = new CardData().getSingleCardData(title);
-	
-	//Ti.API.info('Length of cardData is ' + tableData);
-	/*
-	var table_data = [
-    	{title:'About the Color', color:'black', 
-    		descrip: 'About the Color is Awesome'},
-		{title:'Story', color: 'black',
-			descrip: 'Story is Awesome'},
-		{title:'Inspiration', color: 'black',
-			descrip: 'Inspiration is Awesome'}
-	]; 
-	*/
 		
 	var table = Titanium.UI.createTableView({
 			data: tableData,

@@ -5,22 +5,13 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 	//var TabWindow = require('ui/TabWindow');
 	//var window = new TabWindow(title);
 	
-	//var color = colorGroupName.slice(0, colorGroupName.length - 6); // remove the word "Cards"
 	var window = Ti.UI.createWindow({
 			title: color,
 			backgroundColor: 'black',
 			layout: 'vertical',
 			barColor: '#262626'
 		});
-	
-	/*	
-	var scrollView =  Ti.UI.createScrollView({
-            contentHeight:'auto',
-            top:0,
-            showVerticalScrollIndicator:true,
-            width: '90%'
-        }); //create scroll view
-    */    
+	 
 	var InfoView = require('ui/deck/InfoView');
     var infoView = new InfoView(descrip);
     var CardsView = require('ui/deck/CardsView');
@@ -54,14 +45,10 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
     	infoButton.addEventListener('click', function(e){
     		window.remove(cardsView);
         	window.add(infoView);
-        	//scrollView.remove(cardsView);
-        	//scrollView.add(infoView);
         });
         cardsButton.addEventListener('click', function(e){
         	window.remove(infoView);
         	window.add(cardsView);
-        	//scrollView.remove(infoView);
-        	//scrollView.add(cardsView);
         });
     	buttonView.add(infoButton);
     	buttonView.add(cardsButton);
@@ -84,23 +71,16 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 			{
 				window.remove(cardsView);
         		window.add(infoView);
-        		//scrollView.remove(cardsView);
-        		//scrollView.add(infoView);
 			}
 			else
 			{
 				window.remove(infoView);
         		window.add(cardsView);
-        		/*scrollView.remove(infoView);
-        		scrollView.add(cardsView);
-        		*/
 			}
 		});
 		window.add(buttonBar);
     }
     
-    //scrollView.add(infoView);
-    //window.add(scrollView);
     window.add(infoView);
     return window;
 };

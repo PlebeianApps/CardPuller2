@@ -41,7 +41,7 @@ CardData.prototype.getReadingsData = function(){
             card2descrip: rows.fieldByName("CARD2DESCRIP"),
             card3descrip: rows.fieldByName("CARD3DESCRIP"),
             card4descrip: rows.fieldByName("CARD4DESCRIP"),
-            color: 'black'
+            //color: 'black' // remove this so new styling works for Android
         });
         rows.next();
     }
@@ -60,7 +60,7 @@ CardData.prototype.getColorGroupsData = function() {
             title: rows.fieldByName("GROUPNAME"),
             colorcards: rows.fieldByName("COLOR"),
             descrip: rows.fieldByName("DESCRIPTION"), // "description" is a reserved TableView keyword
-            color: 'black' // color is a reserved TableView keyword
+            //color: 'black' // color is a reserved TableView keyword
         });
         rows.next();
     }

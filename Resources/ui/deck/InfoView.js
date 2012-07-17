@@ -2,13 +2,6 @@
  * @author Vui Nguyen
  */
 function InfoView(description) {
-	/*var infoScroll =  Ti.UI.createScrollView({
-            contentHeight:'auto',
-            top:10,
-            showVerticalScrollIndicator:true,
-            width: '90%'
-        }); //create scroll view
-        */
        var scrollView =  Ti.UI.createScrollView({
             contentHeight:'auto',
             top:0,

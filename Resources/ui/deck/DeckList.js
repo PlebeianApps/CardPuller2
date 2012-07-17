@@ -8,16 +8,6 @@ function DeckList(title) {
 	
 	var CardData = require('db/CardData');
     var tableData = new CardData().getColorGroupsData();
-	/*
-	var tableData = [
-    	{title:'Yellow Cards', color:'black', 
-    		descrip: 'Yellow Cards are Awesome'},
-		{title:'Gold Cards', color: 'black',
-			descrip: 'Gold Cards are Awesome'},
-		{title:'Purple Cards', color: 'black',
-			descrip: 'Purple Cards are Awesome'}
-	]; 
-	*/
 		
 	var table = Titanium.UI.createTableView({
 			data:tableData
@@ -32,20 +22,6 @@ function DeckList(title) {
 		//var readings = new ReadDescWindow(window, e.rowData.title, e.rowData.descrip, e.rowData.numberCards, cardDescrips);
 		
 		infoCardsWindow = new DeckInfoCardsWindow(window, e.rowData.title, e.rowData.colorcards, e.rowData.descrip);
-		/*
-		if (e.rowData.title === 'Yellow Cards')
-		{
-			infoCardsWindow = new DeckInfoCardsWindow(window,'Yellow', e.rowData.descrip);
-		}
-		else if (e.rowData.title === 'Gold Cards')
-		{
-			infoCardsWindow = new DeckInfoCardsWindow(window, 'Gold', e.rowData.descrip);
-		}
-		else
-		{
-			infoCardsWindow = new DeckInfoCardsWindow(window, 'Purple', e.rowData.descrip);
-		}
-		*/
 		window.containingTab.open(infoCardsWindow);
 	});
 		

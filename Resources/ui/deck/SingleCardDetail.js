@@ -15,7 +15,8 @@ function SingleCardDetail(title, content, image, audio) {
     
 	var window = Ti.UI.createWindow({
 			title: title,
-			//backgroundColor: 'black',
+			backgroundColor: 'black',
+			barColor: '#262626',
 			backgroundImage: image,
 			layout: 'vertical'
 		});

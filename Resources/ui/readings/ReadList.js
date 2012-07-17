@@ -1,22 +1,11 @@
 function ReadList(title) {
-	
-		var window = Ti.UI.createWindow({
-			title: title,
-			backgroundColor: 'black',
-			barColor: '#262626'
-		});
 		
-		//var TabWindow = require('ui/TabWindow');
+		var TabWindow = require('ui/TabWindow');
+		var window = TabWindow(title);
         var ReadDescWindow = require('ui/readings/ReadDescWindow');
         var CardData = require('db/CardData');
         		
 	    var tbl_data = new CardData().getReadingsData();
-		/* var tbl_data = [
-    		{title:'Row 1'},
-		    {title:'Row 2'},
-		    {title:'Row 3'}
-		]; */
-		
 		var table = Titanium.UI.createTableView({
 			data:tbl_data
 		});
