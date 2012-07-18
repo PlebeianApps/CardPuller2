@@ -18,6 +18,8 @@ else if (Ti.Platform.osname === 'mobileweb') {
 	alert('Mobile web is not yet supported by this template');
 }
 
+Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK;
+
 // This is a single context application with mutliple windows in a stack
 (function() {
 	//determine platform and form factor and render approproate components
