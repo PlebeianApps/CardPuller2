@@ -30,10 +30,10 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
         });//create view
         
         var button = Ti.UI.createButton ({
-            title: 'Begin',
-           top: 10,
-           width: Ti.UI.FILL,
-           height: Ti.UI.SIZE //wraps button to size of text
+           top: 25,
+           backgroundImage: 'images/button.png',
+           width: '278',
+           height: '45' //wraps button to size of text
         });//create button
         button.addEventListener('click', function(e){
         	// play shuffle sound and then flip sound for every card dealt
@@ -55,25 +55,25 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
         });
         
         var numberLabel = Titanium.UI.createLabel({
-            top: 10,
+            top: 25,
             text: numCards + ' Card Reading',
             height:Ti.UI.SIZE,
-            color:'#E6E6E6',
+            color:'#616D80',
             font:{fontSize:30},
             textAlign:'center'
         });
         
         var descripLabel = Titanium.UI.createLabel({
-            top: 10,
+            top: 25,
             text: currentDescrip,
             height:Ti.UI.SIZE,
-            color:'#E6E6E6',
-            font:{fontSize:24},
+            color:'#616D80',
+            font:{fontSize:16},
             textAlign:'center'
         });//create labels
         
-        view.add(button);
         view.add(numberLabel);
+        view.add(button);
         view.add(descripLabel); 
         scroll.add(view);//add view to scroll
         window.add(scroll);//add scroll to window

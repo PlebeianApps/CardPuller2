@@ -7,9 +7,10 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 	
 	var window = Ti.UI.createWindow({
 			title: color,
-			backgroundColor: 'black',
-			layout: 'vertical',
-			barColor: '#262626'
+			backgroundImage: 'images/bg.png',
+            backgroundRepeat: 'TRUE',
+            barColor: '#272B33',
+			layout: 'vertical'
 		});
 	 
 	var InfoView = require('ui/deck/InfoView');
@@ -58,8 +59,8 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
     {
     	// create a button bar
     	var buttonBar = Titanium.UI.iOS.createTabbedBar({
-   			labels:['Info', 'Cards'],
-    		backgroundColor:'#336699',
+   			labels:['Cards', 'Info'],
+    		backgroundColor:'#272B33',
     		top:10,
     		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
     		height:25,
@@ -69,19 +70,19 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 		buttonBar.addEventListener('click', function(e){
 			if (e.index === 0)
 			{
-				window.remove(cardsView);
-        		window.add(infoView);
+				window.remove(infoView);
+        		window.add(cardsView);
 			}
 			else
 			{
-				window.remove(infoView);
-        		window.add(cardsView);
+				window.remove(cardsView);
+        		window.add(infoView);
 			}
 		});
 		window.add(buttonBar);
     }
     
-    window.add(infoView);
+    window.add(cardsView);
     return window;
 };
 

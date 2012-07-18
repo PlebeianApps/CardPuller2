@@ -7,7 +7,10 @@ function ReadList(title) {
         		
 	    var tbl_data = new CardData().getReadingsData();
 		var table = Titanium.UI.createTableView({
-			data:tbl_data
+			data:tbl_data,
+			backgroundColor: 'transparent',
+			separatorColor: '#1D1D1D',
+			
 		});
 		
 		//var readings = new ReadDescWindow('Default Reading Title');

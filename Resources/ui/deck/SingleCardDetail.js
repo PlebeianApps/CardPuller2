@@ -18,7 +18,8 @@ function SingleCardDetail(title, content, image, audio) {
 			backgroundColor: 'black',
 			barColor: '#262626',
 			backgroundImage: image,
-			layout: 'vertical'
+			layout: 'vertical',
+			backgroundRepeat: 'false'
 		});
 		
 	window.addEventListener('blur', function(e){
@@ -27,15 +28,19 @@ function SingleCardDetail(title, content, image, audio) {
 		
 	var scrollView =  Ti.UI.createScrollView({
             contentHeight:'auto',
-            top:0,
+            top:10,
             showVerticalScrollIndicator:true,
-            width: '90%'
+            width: '100%',
+            backgroundImage: 'images/bg-transparent.png',
+            backgroundRepeat: 'true'
+
         }); //create scroll view
         
     var view = Ti.UI.createView({
             layout: 'vertical',
             height: Ti.UI.FILL,
-            top:0
+            top:0,
+            width: '90%'
         });//create view
         /*
         var button = Ti.UI.createButton ({
@@ -103,7 +108,7 @@ function SingleCardDetail(title, content, image, audio) {
     	// create a button bar
     	var buttonBar = Titanium.UI.iOS.createTabbedBar({
    			labels:['Play', 'Pause', 'Reset'],
-    		backgroundColor:'#336699',
+    		backgroundColor:'#272B33',
     		top:10,
     		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
     		height:25,
@@ -132,9 +137,8 @@ function SingleCardDetail(title, content, image, audio) {
         //height:Ti.UI.FILL, // this height will center the text in the middle of the screen
         height: Ti.UI.SIZE,
         //width: '100%',
-        color:'#900',
-        font:{fontSize:24},
-        textAlign:'center',
+        color: 'black',
+        font:{fontSize:16},
         top: 10
 	});
 	view.add(contentLabel);

@@ -10,7 +10,9 @@ function DeckList(title) {
     var tableData = new CardData().getColorGroupsData();
 		
 	var table = Titanium.UI.createTableView({
-			data:tableData
+			data:tableData,
+			backgroundColor: 'transparent',
+            separatorColor: '#1D1D1D'
 	});
 		
 	var infoCardsWindow;

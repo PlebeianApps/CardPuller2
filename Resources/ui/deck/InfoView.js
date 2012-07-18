@@ -20,8 +20,8 @@ function InfoView(description) {
             top: 10,
             text: description,
             height:Ti.UI.SIZE,
-            color:'#900',
-            font:{fontSize:24},
+            color:'#616D80',
+            font:{fontSize:16},
             textAlign:'center'
         });//create labels
         

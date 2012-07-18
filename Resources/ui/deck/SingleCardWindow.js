@@ -11,14 +11,12 @@ function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTranspare
 	flipSound.play();
 	
 	var TabWindow = require('ui/TabWindow');
-	var window = new TabWindow(windowTitle, imageLoc);	
+	var window = new TabWindow(windowTitle, imageLoc, '100%', 'FALSE');	
 	var SingleCardList = require('ui/deck/SingleCardList');
 	
 	var image = Ti.UI.createImageView({
-		image: '/images/KS_nav_views.png',
-		height: '15%',
-		bottom: '5%',
-		left: '5%'
+		height: '100%',
+		width: '100%'
 	});
 	image.addEventListener('click', function(e) {
 		// have window add another view on top of view

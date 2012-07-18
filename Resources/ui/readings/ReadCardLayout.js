@@ -46,7 +46,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		var numberLabel = Ti.UI.createLabel({
 			top: 10,
 			//color: 'black',
-			color: 'white',
+			color: '#616D80',
 			textAlign: 'center',
 			text: 'Card ' + cardNum + ' out of ' + numberCards
 		});
@@ -95,7 +95,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		var descripLabel = Ti.UI.createLabel({
 			top: 10,
 			//color: 'black',
-			color: 'white',
+			color: '#616D80',
 			textAlign: 'center',
 			text: cardDescrips[i]
 		});

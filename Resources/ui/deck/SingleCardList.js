@@ -3,16 +3,30 @@
  */
 function SingleCardList(parentWindow, title, image) {
 	var TabWindow = require('ui/TabWindow');
-	var window = new TabWindow(title, image);
+	var window = new TabWindow(title, image, 1.0, 'false');
 	var SingleCardDetail = require('ui/deck/SingleCardDetail');
 	var singleCardDetail;
 	
 	var CardData = require('db/CardData');
 	var tableData = new CardData().getSingleCardData(title);
 		
+	var cardTitle = Titanium.UI.createLabel ({
+	   text: title,
+	   top: '15',
+	   color: 'black',
+	   font:{fontSize:24},
+	   width: '90%',
+	   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	   backgroundImage: 'images/bg-transparent.png',
+	   backgroundRepeat: 'true',
+	   borderRadius: '10',
+	   height: '70'
+	});
 	var table = Titanium.UI.createTableView({
 			data: tableData,
-			backgroundColor: 'transparent',
+			backgroundImage: 'images/bg-transparent.png',
+			backgroundRepeat: 'true',
+			top: '100',
 			//opacity: 1
 			//backgroundImage: image
 	});
@@ -25,6 +39,7 @@ function SingleCardList(parentWindow, title, image) {
 		singleCardDetail = new SingleCardDetail(e.rowData.title, e.rowData.content, image, e.rowData.audio);	
 		parentWindow.containingTab.open(singleCardDetail);
 	});
+	window.add(cardTitle);
 	window.add(table);
 	return window;
 };
