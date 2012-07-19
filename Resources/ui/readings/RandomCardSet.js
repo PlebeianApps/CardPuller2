@@ -6,14 +6,15 @@ function RandomCardSet(numCardsPulled)
 	var shuffleSound = Ti.Media.createSound({
 				url: '/audio/CardShuffle.mp3',
 				preload: true,
-				looping: true,
+				looping: false,
 				//allowBackground: true
 		});
 	var flipSound = Ti.Media.createSound({
-				url: '/audio/CardFlip.mp3',
+				url: '/audio/Xylo.mp3',
 				preload: true
 		});
 	shuffleSound.play();
+	flipSound.play();
 	
 	var CardData = require('db/CardData');
 	var deckSize = new CardData().getDeckSize();

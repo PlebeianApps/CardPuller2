@@ -46,7 +46,7 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
 			for (var i = 0; i < numCards; i++)
 			{
 				// make sure you delay long enough for the shuffling to take place
-				setTimeout(function(){flipSound.play()}, timeout*(i+1));
+				//setTimeout(function(){flipSound.play()}, timeout*(i+1));
 			}
         	//var cardLayout = new ReadCardLayout(parentWindow, currentTitle, numCards, cardDescrips);
         	var cardLayout = new ReadCardLayout(parentWindow, currentTitle, cardSet, cardDescrips);
