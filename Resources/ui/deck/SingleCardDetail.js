@@ -31,8 +31,8 @@ function SingleCardDetail(title, content, image, audio) {
             top:10,
             showVerticalScrollIndicator:true,
             width: '100%',
-            backgroundImage: 'images/bg-transparent.png',
-            backgroundRepeat: 'true'
+            //backgroundImage: 'images/bg-transparent.png',
+            //backgroundRepeat: 'true'
 
         }); //create scroll view
         
@@ -40,7 +40,10 @@ function SingleCardDetail(title, content, image, audio) {
             layout: 'vertical',
             height: Ti.UI.FILL,
             top:0,
-            width: '90%'
+            width: '90%',
+            backgroundImage: 'images/bg-transparent.png',
+            backgroundRepeat: 'true',
+            borderRadius: '10'
         });//create view
         /*
         var button = Ti.UI.createButton ({
@@ -139,7 +142,8 @@ function SingleCardDetail(title, content, image, audio) {
         //width: '100%',
         color: 'black',
         font:{fontSize:16},
-        top: 10
+        top: 10,
+        width: '90%'
 	});
 	view.add(contentLabel);
 	scrollView.add(view);
