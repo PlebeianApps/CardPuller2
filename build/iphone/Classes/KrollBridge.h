@@ -19,9 +19,9 @@
 
 #ifdef KROLL_COVERAGE
 # import "KrollCoverage.h"
-@interface CardPuller2Object : KrollCoverageObject {
+@interface ColorWisdomObject : KrollCoverageObject {
 #else
-@interface CardPuller2Object : KrollObject {
+@interface ColorWisdomObject : KrollObject {
 #endif
 @private
 	NSMutableDictionary *modules;
@@ -35,7 +35,7 @@
 -(TiModule*)moduleNamed:(NSString*)name context:(id<TiEvaluator>)context;
 @end
 
-extern NSString * CardPuller2$ModuleRequireFormat;
+extern NSString * ColorWisdom$ModuleRequireFormat;
 
 @interface KrollBridge : Bridge<TiEvaluator,KrollDelegate> {
 @private
@@ -44,7 +44,7 @@ extern NSString * CardPuller2$ModuleRequireFormat;
 	KrollContext *context;
 	NSDictionary *preload;
 	NSMutableDictionary *modules;
-	CardPuller2Object *_cardpuller2;
+	ColorWisdomObject *_colorwisdom;
 	BOOL shutdown;
     BOOL evaluationError;
 	//NOTE: Do NOT treat registeredProxies like a mutableDictionary; mutable dictionaries copy keys,

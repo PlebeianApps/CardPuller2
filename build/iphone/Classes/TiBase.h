@@ -44,7 +44,7 @@ extern "C" {
 	#define KMETHOD_DEBUG MEMORY_DEBUG
 #endif
 
-// in simulator we redefine to format for CardPuller2 Developer console
+// in simulator we redefine to format for ColorWisdom Developer console
 
 
 #define TI_INLINE static __inline__
@@ -280,14 +280,14 @@ void TiExceptionThrowWithNameAndReason(NSString * exceptionName, NSString * mess
 #define DEFINE_EXCEPTIONS \
 - (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = [@"org.cardpuller2." stringByAppendingString:NSStringFromClass([self class])];\
+	NSString * exceptionName = [@"org.colorwisdom." stringByAppendingString:NSStringFromClass([self class])];\
 	NSString * message = [NSString stringWithFormat:@"%@. %@ %@",reason,(subreason!=nil?subreason:@""),(location!=nil?location:@"")];\
 	TiExceptionThrowWithNameAndReason(exceptionName,message);\
 }\
 \
 + (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = @"org.cardpuller2";\
+	NSString * exceptionName = @"org.colorwisdom";\
 	NSString * message = [NSString stringWithFormat:@"%@. %@ %@",reason,(subreason!=nil?subreason:@""),(location!=nil?location:@"")];\
 	TiExceptionThrowWithNameAndReason(exceptionName,message);\
 }\
@@ -388,28 +388,28 @@ NSLog(@"[WARN] Ti%@.%@ DEPRECATED in %@, in favor of %@.",@"tanium",api,in,newap
 
  //MUST BE NEGATIVE, as it inhabits the same space as UIBarButtonSystemItem
 enum {
-	UICardPuller2NativeItemNone = -1, 
-	UICardPuller2NativeItemSpinner = -2,
-	UICardPuller2NativeItemProgressBar = -3,
+	UIColorWisdomNativeItemNone = -1, 
+	UIColorWisdomNativeItemSpinner = -2,
+	UIColorWisdomNativeItemProgressBar = -3,
 	
-	UICardPuller2NativeItemSlider = -4,
-	UICardPuller2NativeItemSwitch = -5,
-	UICardPuller2NativeItemMultiButton = -6,
-	UICardPuller2NativeItemSegmented = -7,
+	UIColorWisdomNativeItemSlider = -4,
+	UIColorWisdomNativeItemSwitch = -5,
+	UIColorWisdomNativeItemMultiButton = -6,
+	UIColorWisdomNativeItemSegmented = -7,
 	
-	UICardPuller2NativeItemTextView = -8,
-	UICardPuller2NativeItemTextField = -9,
-	UICardPuller2NativeItemSearchBar = -10,
+	UIColorWisdomNativeItemTextView = -8,
+	UIColorWisdomNativeItemTextField = -9,
+	UIColorWisdomNativeItemSearchBar = -10,
 	
-	UICardPuller2NativeItemPicker = -11,
-	UICardPuller2NativeItemDatePicker = -12,
+	UIColorWisdomNativeItemPicker = -11,
+	UIColorWisdomNativeItemDatePicker = -12,
 	
-	UICardPuller2NativeItemInfoLight = -13,
-	UICardPuller2NativeItemInfoDark = -14,
+	UIColorWisdomNativeItemInfoLight = -13,
+	UIColorWisdomNativeItemInfoDark = -14,
 	
-	UICardPuller2NativeItemDisclosure = -15,
+	UIColorWisdomNativeItemDisclosure = -15,
 	
-	UICardPuller2NativeItemContactAdd = -16
+	UIColorWisdomNativeItemContactAdd = -16
 };
 
 
@@ -567,7 +567,7 @@ void incrementKrollCounter();
 void decrementKrollCounter();
     
 /**
- *	TiThreadPerformOnMainThread should replace all CardPuller2 instances of
+ *	TiThreadPerformOnMainThread should replace all ColorWisdom instances of
  *	performSelectorOnMainThread, ESPECIALLY if wait is to be yes. That way,
  *	exceptional-case main thread activities can process them outside of the
  *	standard event loop.

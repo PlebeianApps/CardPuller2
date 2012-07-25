@@ -63,10 +63,10 @@
 {
 	switch(styleCache)
 	{
-		case UICardPuller2NativeItemInfoLight:
-		case UICardPuller2NativeItemInfoDark:
+		case UIColorWisdomNativeItemInfoLight:
+		case UIColorWisdomNativeItemInfoDark:
 			return 18;
-		case UICardPuller2NativeItemDisclosure:
+		case UIColorWisdomNativeItemDisclosure:
 			return 29;
 		default: {
 			break;
@@ -79,10 +79,10 @@
 {
 	switch(styleCache)
 	{
-		case UICardPuller2NativeItemInfoLight:
-		case UICardPuller2NativeItemInfoDark:
+		case UIColorWisdomNativeItemInfoLight:
+		case UIColorWisdomNativeItemInfoDark:
 			return 19;
-		case UICardPuller2NativeItemDisclosure:
+		case UIColorWisdomNativeItemDisclosure:
 			return 31;
 		default: {
 			break;
@@ -96,9 +96,9 @@
 {
 	switch (styleCache)
 	{
-		case UICardPuller2NativeItemInfoLight:
-		case UICardPuller2NativeItemInfoDark:
-		case UICardPuller2NativeItemDisclosure:
+		case UIColorWisdomNativeItemInfoLight:
+		case UIColorWisdomNativeItemInfoDark:
+		case UIColorWisdomNativeItemDisclosure:
 			return suggestedResizing & ~(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 		default: {
 			break;

@@ -74,7 +74,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 			//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			//textAlign: 'center',
 			text: 'Turn Card',
-			font: { fontSize:28 },
+			font: { fontSize:22 },
 			//width: Ti.UI.FILL
 		});
 		

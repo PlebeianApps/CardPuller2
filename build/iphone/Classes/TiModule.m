@@ -152,7 +152,7 @@
 		if (resultClass==nil)
 		{
 			NSLog(@"[WARN] attempted to load: %@",className);
-			@throw [NSException exceptionWithName:@"org.cardpuller2.module" 
+			@throw [NSException exceptionWithName:@"org.colorwisdom.module" 
 										   reason:[NSString stringWithFormat:@"invalid method (%@) passed to %@",name,[self class]] 
 										 userInfo:nil];
 		}
@@ -212,7 +212,7 @@
 
 -(id)bindCommonJSModule:(NSString*)code
 {
-	NSString *js = [[NSString alloc] initWithFormat:CardPuller2$ModuleRequireFormat,code];
+	NSString *js = [[NSString alloc] initWithFormat:ColorWisdom$ModuleRequireFormat,code];
 	
 	id result = [[self pageContext] evalJSAndWait:js];
 	[js release];

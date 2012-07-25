@@ -9,7 +9,7 @@ function ApplicationTabGroup() {
 	var win1 = new WindowGroup('readings');
 	var	win2 = new WindowGroup('deck');
 	//var	win3 = new WindowGroup('history');
-	var	win4 = new WindowGroup('info');
+	var	win4 = new WindowGroup('about');
 	
 	var tab1 = Ti.UI.createTab({
 		title: 'Readings',
@@ -34,19 +34,17 @@ function ApplicationTabGroup() {
 	win3.containingTab = tab3;
 	*/
 	
-	/*
 	var tab4 = Ti.UI.createTab({
-		title: 'Info',
-		icon: '/images/KS_nav_views.png',
+		title: 'About',
+		icon: '/images/about.png',
 		window: win4
 	});
 	win4.containingTab = tab4;
-	*/
 	
 	self.addTab(tab1);
 	self.addTab(tab2);
 	//self.addTab(tab3);
-	//self.addTab(tab4);	
+	self.addTab(tab4);	
 	return self;
 };
 

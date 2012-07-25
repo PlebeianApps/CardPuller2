@@ -12,7 +12,7 @@
 @class TiHost;
 
 /**
- The base class for all CardPuller2 modules
+ The base class for all ColorWisdom modules
  */
 @interface TiModule : TiProxy 
 {
@@ -49,24 +49,24 @@
 // lifecycle
 
 /**
- CardPuller2 Platform calls this method on startup.
+ ColorWisdom Platform calls this method on startup.
  */
 -(void)startup;
 
 /**
- CardPuller2 Platform calls this method on shutdown.
+ ColorWisdom Platform calls this method on shutdown.
  @param sender The sender of the event.
  */
 -(void)shutdown:(id)sender;
 
 /**
- CardPuller2 Platform calls this method on suspend.
+ ColorWisdom Platform calls this method on suspend.
  @param sender The sender of the event.
  */
 -(void)suspend:(id)sender;
 
 /**
- CardPuller2 Platform calls this method on resume.
+ ColorWisdom Platform calls this method on resume.
  @param sender The sender of the event.
  */
 -(void)resume:(id)sender;

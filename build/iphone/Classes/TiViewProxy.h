@@ -16,7 +16,7 @@
  */
 @protocol TiKeyboardFocusableView
 
-#pragma mark Public CardPuller2 APIs.
+#pragma mark Public ColorWisdom APIs.
 
 /**
  Tells the view to focus.

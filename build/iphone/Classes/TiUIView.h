@@ -42,7 +42,7 @@ void ModifyScrollViewForKeyboardHeightAndContentHeightWithResponderRect(UIScroll
 @class TiViewProxy;
 
 /**
- Base class for all CardPuller2 views.
+ Base class for all ColorWisdom views.
  @see TiViewProxy
  */
 @interface TiUIView : UIView<TiProxyDelegate,LayoutAutosizing> 

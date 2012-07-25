@@ -16,23 +16,23 @@
 {
 	switch (type)
 	{
-		case UICardPuller2NativeItemInfoLight:
+		case UIColorWisdomNativeItemInfoLight:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoLight];
 		}
-		case UICardPuller2NativeItemInfoDark:
+		case UIColorWisdomNativeItemInfoDark:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoDark];
 		}
-		case UICardPuller2NativeItemDisclosure:
+		case UIColorWisdomNativeItemDisclosure:
 		{
 			return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 		}
-		case UICardPuller2NativeItemContactAdd:
+		case UIColorWisdomNativeItemContactAdd:
 		{
 			return [UIButton buttonWithType:UIButtonTypeContactAdd];
 		}
-		case UICardPuller2NativeItemSpinner:
+		case UIColorWisdomNativeItemSpinner:
 		{
 			UIActivityIndicatorView *button = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
 			[button startAnimating];

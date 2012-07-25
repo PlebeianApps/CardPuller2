@@ -14,7 +14,7 @@
 #import "TiViewController.h"
 
 /**
- CardPuller2 orientation flags.
+ ColorWisdom orientation flags.
  */
 typedef enum
 {

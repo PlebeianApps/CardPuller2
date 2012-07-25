@@ -798,7 +798,7 @@ static TiValueRef StringFormatDecimalCallback (TiContextRef jsContext, TiObjectR
 {
 	if (stopped!=YES)
 	{
-		@throw [NSException exceptionWithName:@"org.cardpuller2.kroll" 
+		@throw [NSException exceptionWithName:@"org.colorwisdom.kroll" 
 									   reason:@"already started"
 									 userInfo:nil];
 	}

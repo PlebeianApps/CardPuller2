@@ -295,13 +295,13 @@
         NSLog(@"[WARN] Invalid mode for audio player... setting to default.");
         newMode = kAudioSessionCategory_SoloAmbientSound;
     }
-	NSLog(@"[WARN] 'CardPuller2.Media.Sound.audioSessionMode' is deprecated; use 'CardPuller2.Media.audioSessionMode'");
+	NSLog(@"[WARN] 'ColorWisdom.Media.Sound.audioSessionMode' is deprecated; use 'ColorWisdom.Media.audioSessionMode'");
 	[[TiMediaAudioSession sharedSession] setSessionMode:newMode];
 }
 
 -(NSNumber*)audioSessionMode
 {
-	NSLog(@"[WARN] 'CardPuller2.Media.Sound.audioSessionMode' is deprecated; use 'CardPuller2.Media.audioSessionMode'");
+	NSLog(@"[WARN] 'ColorWisdom.Media.Sound.audioSessionMode' is deprecated; use 'ColorWisdom.Media.audioSessionMode'");
     return [NSNumber numberWithUnsignedInteger:[[TiMediaAudioSession sharedSession] sessionMode]];
 }
 

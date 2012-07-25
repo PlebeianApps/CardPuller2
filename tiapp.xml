@@ -15,15 +15,15 @@
     </deployment-targets>
     <sdk-version>2.0.1.GA2</sdk-version>
     <id>com.plebeianapps.cardpuller2</id>
-    <name>CardPuller2</name>
+    <name>Color Wisdom</name>
     <version>1.0</version>
-    <publisher>vuinguyen</publisher>
+    <publisher>Plebeian Apps</publisher>
     <url>http://plebeianapps.com</url>
     <description>not specified</description>
-    <copyright>2012 by vuinguyen</copyright>
+    <copyright>2012 by Plebeian Apps, LLC</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
-    <prerendered-icon>false</prerendered-icon>
+    <prerendered-icon>true</prerendered-icon>
     <statusbar-style>default</statusbar-style>
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>

@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2011 by CardPuller2, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2011 by ColorWisdom, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -511,10 +511,10 @@ bool KrollSetProperty(TiContextRef jsContext, TiObjectRef object, TiStringRef pr
 
 // forward declare these
 
-//@interface CardPuller2Object : NSObject
+//@interface ColorWisdomObject : NSObject
 //@end
 
-@interface CardPuller2Object (Private)
+@interface ColorWisdomObject (Private)
 -(NSDictionary*)modules;
 @end
 
@@ -532,9 +532,9 @@ void KrollPropertyNames(TiContextRef ctx, TiObjectRef object, TiPropertyNameAccu
 	{
 		id target = [o target];
 		
-		if ([o isKindOfClass:[CardPuller2Object class]])
+		if ([o isKindOfClass:[ColorWisdomObject class]])
 		{
-			for (NSString *key in [[(CardPuller2Object*)o modules] allKeys])
+			for (NSString *key in [[(ColorWisdomObject*)o modules] allKeys])
 			{
 				TiStringRef value = TiStringCreateWithUTF8CString([key UTF8String]);
 				TiPropertyNameAccumulatorAddName(propertyNames,value);

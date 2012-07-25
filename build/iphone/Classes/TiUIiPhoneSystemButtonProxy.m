@@ -34,12 +34,12 @@ MAKE_SYSTEM_PROP(DONE,UIBarButtonSystemItemDone);
 MAKE_SYSTEM_PROP(FLEXIBLE_SPACE,UIBarButtonSystemItemFlexibleSpace);
 MAKE_SYSTEM_PROP(FIXED_SPACE,UIBarButtonSystemItemFixedSpace);
 
-MAKE_SYSTEM_PROP(ACTIVITY,UICardPuller2NativeItemSpinner);
-MAKE_SYSTEM_PROP(SPINNER,UICardPuller2NativeItemSpinner);
-MAKE_SYSTEM_PROP(INFO_LIGHT,UICardPuller2NativeItemInfoLight);
-MAKE_SYSTEM_PROP(INFO_DARK,UICardPuller2NativeItemInfoDark);
-MAKE_SYSTEM_PROP(DISCLOSURE,UICardPuller2NativeItemDisclosure);
-MAKE_SYSTEM_PROP(CONTACT_ADD,UICardPuller2NativeItemContactAdd);
+MAKE_SYSTEM_PROP(ACTIVITY,UIColorWisdomNativeItemSpinner);
+MAKE_SYSTEM_PROP(SPINNER,UIColorWisdomNativeItemSpinner);
+MAKE_SYSTEM_PROP(INFO_LIGHT,UIColorWisdomNativeItemInfoLight);
+MAKE_SYSTEM_PROP(INFO_DARK,UIColorWisdomNativeItemInfoDark);
+MAKE_SYSTEM_PROP(DISCLOSURE,UIColorWisdomNativeItemDisclosure);
+MAKE_SYSTEM_PROP(CONTACT_ADD,UIColorWisdomNativeItemContactAdd);
 
 
 @end

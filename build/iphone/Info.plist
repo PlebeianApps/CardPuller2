@@ -17,7 +17,7 @@
 			<string>com.plebeianapps.cardpuller2</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>cardpuller2</string>
+				<string>colorwisdom</string>
 				
 			</array>
 		</dict>
@@ -38,9 +38,12 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+        <key>UIPrerenderedIcon</key>
+        <true/>
         <key>CFBundleIconFiles</key>
         <array>
 	<string>appicon.png</string>
+	<string>appicon@2x.png</string>
 </array>
 
         <key>UISupportedInterfaceOrientations~ipad</key>

@@ -12,6 +12,7 @@ function WindowGroup(title) {
 	var TabWindow = require('ui/TabWindow');
 	var ReadList = require('ui/readings/ReadList');
 	var DeckList = require('ui/deck/DeckList');
+	var AboutInfo = require('ui/About');
 	
 	function EventListener(button,parent,child){
 		button.addEventListener('click', function() {
@@ -55,10 +56,7 @@ function WindowGroup(title) {
 		readingCards.add(buttonReadingCards);
 		return history;
 	} else {
-		var info = new TabWindow('Info');
-		var infoText = new TabWindow('Info Text');
-		var buttonInfo = new NavButton(info,infoText);
-		info.add(buttonInfo);
+		var info = new AboutInfo('About');
 		return info;
 	}
 };

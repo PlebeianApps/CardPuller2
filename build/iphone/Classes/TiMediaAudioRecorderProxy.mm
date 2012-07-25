@@ -206,13 +206,13 @@
         NSLog(@"[WARN] Invalid mode for audio recorder... setting to default.");
         newMode = kAudioSessionCategory_RecordAudio;
     }
-	NSLog(@"[WARN] 'CardPuller2.Media.AudioRecorder.audioSessionMode' is deprecated; use 'CardPuller2.Media.audioSessionMode'");
+	NSLog(@"[WARN] 'ColorWisdom.Media.AudioRecorder.audioSessionMode' is deprecated; use 'ColorWisdom.Media.audioSessionMode'");
 	[[TiMediaAudioSession sharedSession] setSessionMode:newMode];
 }
 
 -(NSNumber*)audioSessionMode
 {
-	NSLog(@"[WARN] 'CardPuller2.Media.AudioRecorder.audioSessionMode' is deprecated; use 'CardPuller2.Media.audioSessionMode'");	
+	NSLog(@"[WARN] 'ColorWisdom.Media.AudioRecorder.audioSessionMode' is deprecated; use 'ColorWisdom.Media.audioSessionMode'");	
     return [NSNumber numberWithUnsignedInt:[[TiMediaAudioSession sharedSession] sessionMode]];
 }
 

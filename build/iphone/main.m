@@ -9,12 +9,12 @@
 
 NSString * const TI_APPLICATION_DEPLOYTYPE = @"development";
 NSString * const TI_APPLICATION_ID = @"com.plebeianapps.cardpuller2";
-NSString * const TI_APPLICATION_PUBLISHER = @"vuinguyen";
+NSString * const TI_APPLICATION_PUBLISHER = @"Plebeian Apps";
 NSString * const TI_APPLICATION_URL = @"http://plebeianapps.com";
-NSString * const TI_APPLICATION_NAME = @"CardPuller2";
+NSString * const TI_APPLICATION_NAME = @"Color Wisdom";
 NSString * const TI_APPLICATION_VERSION = @"1.0";
 NSString * const TI_APPLICATION_DESCRIPTION = @"not specified";
-NSString * const TI_APPLICATION_COPYRIGHT = @"2012 by vuinguyen";
+NSString * const TI_APPLICATION_COPYRIGHT = @"2012 by Plebeian Apps, LLC";
 NSString * const TI_APPLICATION_GUID = @"7ee1bb55-cfe5-43dc-ae9b-dfec790b2e69";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 
