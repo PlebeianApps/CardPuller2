@@ -1,4 +1,3 @@
-//function ReadDescWindow(defaultTitle) {
 function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, cardDescrips) {
     	Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
 		var flipSound = Ti.Media.createSound({
@@ -31,27 +30,31 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
         
         var button = Ti.UI.createButton ({
            top: 25,
-           backgroundImage: 'images/button.png',
-           width: '278',
-           height: '45' //wraps button to size of text
+           //image: 'images/button.png', // This is Vui's attempt to make the image work
+           //backgroundColor: 'transparent', // on Android
+           //backgroundImage: 'images/button.png' // this didn't show up on Android
+           //width: 278,
+           //height: 45
+           title: 'Begin',
+           width: Ti.UI.FILL
         });//create button
         button.addEventListener('click', function(e){
         	// play shuffle sound and then flip sound for every card dealt
         	// shuffle sound plays while we're still drawing random cards for the array
-        	// hence, shuffle sound is playing in the RnadomCardSet call
+        	// hence, shuffle sound is playing in the RandomCardSet call
         	var RandomCardSet = require('ui/readings/RandomCardSet');
         	var cardSet = new RandomCardSet(numCards);
         	
-			var timeout = 600; // timeout in milliseconds
+			//var timeout = 600; // timeout in milliseconds, this seems to slow
+			var timeout = 500;
 			for (var i = 0; i < numCards; i++)
 			{
 				// make sure you delay long enough for the shuffling to take place
 				//setTimeout(function(){flipSound.play()}, timeout*(i+1));
 			}
-        	//var cardLayout = new ReadCardLayout(parentWindow, currentTitle, numCards, cardDescrips);
         	var cardLayout = new ReadCardLayout(parentWindow, currentTitle, cardSet, cardDescrips);
+        	// wait until shuffling sound is done playing before you open the next window
         	setTimeout(function(){parentWindow.containingTab.open(cardLayout);}, (timeout*numCards));
-        	//parentWindow.containingTab.open(cardLayout);
         });
         
         var numberLabel = Titanium.UI.createLabel({

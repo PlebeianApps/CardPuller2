@@ -11,8 +11,10 @@ function DeckList(title) {
 		
 	var table = Titanium.UI.createTableView({
 			data:tableData,
+			// these styling attributes need to be here
+			// it won't work if they're set in the CardData file
 			backgroundColor: 'transparent',
-            separatorColor: '#1D1D1D'
+			separatorColor: '#1D1D1D'
 	});
 		
 	var infoCardsWindow;

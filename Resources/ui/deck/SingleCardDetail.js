@@ -2,10 +2,6 @@
  * @author Vui Nguyen
  */
 function SingleCardDetail(title, content, image, audio) {
-	//var TabWindow = require('ui/TabWindow');
-	//var window = TabWindow(title, image);
-	//Ti.API.info('The value of audio is ' + audio);
-    //Ti.Media.createAudioPlayer({ url: 'https://fleetcreature.basecamphq.com/projects/9058309/file/112960605/KellytheGreenDragon-Color.mp3'});
     Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
     var sound = Titanium.Media.createSound({
     	url: audio,
@@ -43,22 +39,8 @@ function SingleCardDetail(title, content, image, audio) {
             width: '90%',
             backgroundImage: 'images/bg-transparent.png',
             backgroundRepeat: 'true',
-            borderRadius: '10'
+            borderRadius: 10
         });//create view
-        /*
-        var button = Ti.UI.createButton ({
-            title: 'Begin',
-           top: 10,
-           width: Ti.UI.FILL,
-           height: Ti.UI.SIZE //wraps button to size of text
-        });//create button
-        button.addEventListener('click', function(e){
-        	var cardLayout = new ReadCardLayout(defaultTitle, defaultNumCards, cardDescrips);
-        	parentWindow.containingTab.open(cardLayout);
-        });;
-        */
-    
-    
     
     var platform = Ti.Platform.osname;   
     if (platform === 'android')
@@ -135,6 +117,7 @@ function SingleCardDetail(title, content, image, audio) {
 		window.add(buttonBar);
     }
      
+    /* 
 	var contentLabel = Ti.UI.createLabel({
 		text: content,
         //height:Ti.UI.FILL, // this height will center the text in the middle of the screen
@@ -143,8 +126,26 @@ function SingleCardDetail(title, content, image, audio) {
         color: 'black',
         font:{fontSize:16},
         top: 10,
-        width: '90%'
+        width: '90%',
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 	});
+	*/
+	
+	// Since iOS has this "bug" when long words get truncated instead of word wrapped (not a
+	//	problem with Android, go figure!), switched to using a text area instead of a label
+	// see this forum for explanation of solution: http://developer.appcelerator.com/question/136446/problem-with-long-text-inside-a-label-on-ios
+	var contentLabel = Ti.UI.createTextArea({
+		color: 'black',
+		value: content,
+		editable: false,
+		height: Ti.UI.FILL,
+        font:{fontSize:16},
+        top: 10,
+        width: '90%',
+        backgroundColor: 'transparent',
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+	});
+	
 	view.add(contentLabel);
 	scrollView.add(view);
 	

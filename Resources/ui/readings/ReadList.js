@@ -5,12 +5,13 @@ function ReadList(title) {
         var ReadDescWindow = require('ui/readings/ReadDescWindow');
         var CardData = require('db/CardData');
         		
-	    var tbl_data = new CardData().getReadingsData();
+	    var tableData = new CardData().getReadingsData();
 		var table = Titanium.UI.createTableView({
-			data:tbl_data,
-			backgroundColor: 'transparent',
-			separatorColor: '#1D1D1D',
-			
+			data:tableData,
+			// these styling attributes need to be here
+			// it won't work if they're set in the CardData file
+			backgroundColor: 'transparent', 
+            separatorColor: '#1D1D1D'
 		});
 		
 		//var readings = new ReadDescWindow('Default Reading Title');

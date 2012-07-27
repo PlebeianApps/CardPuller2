@@ -34,12 +34,10 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		//Ti.API.info('card description is ' + cardDescrips[i]);
 		// create a View, add a label and an image view with a default image for now
 		var view = Titanium.UI.createView({
-			//contentHeight:'auto', // do we need this?
             top:0,
             width: '80%',
             height: '100%',
             layout: 'vertical',
-			//backgroundColor:'#FFFFCC'
 		});
 		
 		var cardNum = i + 1;

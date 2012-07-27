@@ -11,7 +11,7 @@ function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTranspare
 	flipSound.play();
 	
 	var TabWindow = require('ui/TabWindow');
-	var window = new TabWindow(windowTitle, imageLoc, '100%', 'FALSE');	
+	var window = new TabWindow(windowTitle, imageLoc, 1, 'FALSE');	
 	var SingleCardList = require('ui/deck/SingleCardList');
 	
 	var image = Ti.UI.createImageView({

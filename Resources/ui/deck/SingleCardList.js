@@ -12,21 +12,21 @@ function SingleCardList(parentWindow, title, image) {
 		
 	var cardTitle = Titanium.UI.createLabel ({
 	   text: title,
-	   top: '15',
+	   top: 15,
 	   color: 'black',
 	   font:{fontSize:24},
 	   width: '90%',
 	   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	   backgroundImage: 'images/bg-transparent.png',
 	   backgroundRepeat: 'true',
-	   borderRadius: '10',
-	   height: '70'
+	   borderRadius: 10,
+	   height: 70
 	});
 	var table = Titanium.UI.createTableView({
 			data: tableData,
 			backgroundImage: 'images/bg-transparent.png',
 			backgroundRepeat: 'true',
-			top: '100',
+			top: 100,
 			//opacity: 1
 			//backgroundImage: image
 	});
