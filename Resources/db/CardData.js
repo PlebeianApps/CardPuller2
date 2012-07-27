@@ -126,7 +126,9 @@ CardData.prototype.getSingleCardData = function(cardName) {
             content: rows.fieldByName("SECTIONCONTENT"),
             audio: rows.fieldByName("SECTIONAUDIO"),
             color: 'black',
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            // add an icon to this row only if there's a valid sound file
+            rightImage: (rows.fieldByName("SECTIONAUDIO") != 'Buy Now') ? 'images/info.png' : ''
         });
         rows.next();
     }

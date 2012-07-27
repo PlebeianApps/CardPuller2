@@ -2,12 +2,25 @@
  * @author Vui Nguyen
  */
 function SingleCardDetail(title, content, image, audio) {
-    Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
-    var sound = Titanium.Media.createSound({
-    	url: audio,
-    	preload: true,
-    	allowBackground: false
-    });
+    // check to see if the sound file is "Buy Now", if it is, continue with the rest of the 
+    // sound player stuff; If not, skip the sound player stuff
+    var soundFileAvail = false;
+    if (audio != 'Buy Now')
+    {	
+    	soundFileAvail = true;
+    } 
+    
+    var sound;
+    
+    if (soundFileAvail)
+    {
+    	Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
+    	sound = Titanium.Media.createSound({
+    		url: audio,
+    		preload: true,
+    		allowBackground: false
+    	});
+    }
     
 	var window = Ti.UI.createWindow({
 			title: title,
@@ -19,7 +32,9 @@ function SingleCardDetail(title, content, image, audio) {
 		});
 		
 	window.addEventListener('blur', function(e){
-		sound.stop();
+		if (soundFileAvail) {
+			sound.stop();	// if sound file available, stop playing when going back a window
+		}
 	});
 		
 	var scrollView =  Ti.UI.createScrollView({
@@ -29,7 +44,6 @@ function SingleCardDetail(title, content, image, audio) {
             width: '100%',
             //backgroundImage: 'images/bg-transparent.png',
             //backgroundRepeat: 'true'
-
         }); //create scroll view
         
     var view = Ti.UI.createView({
@@ -42,6 +56,8 @@ function SingleCardDetail(title, content, image, audio) {
             borderRadius: 10
         });//create view
     
+    if (soundFileAvail)
+    {
     var platform = Ti.Platform.osname;   
     if (platform === 'android')
     {
@@ -116,7 +132,8 @@ function SingleCardDetail(title, content, image, audio) {
 		});
 		window.add(buttonBar);
     }
-     
+    } // if soundFileAvail is true 
+    
     /* 
 	var contentLabel = Ti.UI.createLabel({
 		text: content,
