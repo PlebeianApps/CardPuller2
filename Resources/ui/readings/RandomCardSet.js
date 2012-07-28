@@ -57,14 +57,7 @@ function RandomCardSet(numCardsPulled)
 			Ti.API.info('length of data AFTER is ' + largestIndex);
 			Ti.API.info("\n");
 	}
-	/*
-	Ti.API.info('Size of deck is ' + deckSize);
-	var cardSet = ['bogus','more bogus', 'blah', 'blah blah'];
-	for (var i = 0; i < deckSize; i++)
-	{
-		Ti.API.info("Print " + i);
-	}
-	*/
+	
 	for (var i = 0; i < cardSet.length; i++)
 	{
 		Ti.API.info('cardSet[' + i + ']: ' + cardSet[i]);

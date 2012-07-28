@@ -44,8 +44,8 @@ CardData.prototype.getReadingsData = function(){
             // Styling attributes, not related to table data
             color: '#616D80',
             selectedBackgroundColor : '#1A1A1A',
-            
-            //height: Titanium.UI.SIZE, // this line crashed Android
+            //height: 'auto', // this line did not crash Android, but didn't seem to work on iphone anyway
+            //height: Ti.UI.SIZE, // this line crashed Android
         });
         rows.next();
     }
@@ -128,7 +128,7 @@ CardData.prototype.getSingleCardData = function(cardName) {
             color: 'black',
             backgroundColor: 'transparent',
             // add an icon to this row only if there's a valid sound file
-            rightImage: (rows.fieldByName("SECTIONAUDIO") != 'Buy Now') ? 'images/info.png' : ''
+            rightImage: (rows.fieldByName("SECTIONAUDIO") != 'Buy Now') ? '/images/info.png' : ''
         });
         rows.next();
     }

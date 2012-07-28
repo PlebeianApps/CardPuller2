@@ -99,7 +99,7 @@ function CardsView(parentWindow, colorOfCards) {
 							customImageTransparent: cardLocationsTransparent[i] // custom property
 							//opacity: '.5' // let's play with this
 						}); 
-						image.addEventListener('click', function(e){
+						image.addEventListener('longpress', function(e){
 							parentWindow.containingTab.open(
 								//new SingleCardWindow(parentWindow, title, imageLoc, imageTransparent));
 								new SingleCardWindow(parentWindow, e.source.customTitle, e.source.image, e.source.customImageTransparent));

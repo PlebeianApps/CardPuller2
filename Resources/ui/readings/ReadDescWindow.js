@@ -1,16 +1,4 @@
 function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, cardDescrips) {
-    	Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
-		var flipSound = Ti.Media.createSound({
-				url: '/audio/CardFlip.mp3',
-				preload: true
-		});
-		var shuffleSound = Ti.Media.createSound({
-				url: '/audio/CardShuffle.mp3',
-				preload: true,
-				looping: true,
-				allowBackground: true
-		});
-    
     	var ReadCardLayout = require('ui/readings/ReadCardLayout');
     	var TabWindow = require('ui/TabWindow');
 		var window = new TabWindow(currentTitle);
@@ -30,28 +18,18 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
         
         var button = Ti.UI.createButton ({
            top: 25,
-           //image: 'images/button.png', // This is Vui's attempt to make the image work
-           //backgroundColor: 'transparent', // on Android
-           //backgroundImage: 'images/button.png' // this didn't show up on Android
-           //width: 278,
-           //height: 45
-           title: 'Begin',
-           width: Ti.UI.FILL
+           backgroundImage: '/images/button.png', 
+           width: 278,
+           height: 45
         });//create button
         button.addEventListener('click', function(e){
-        	// play shuffle sound and then flip sound for every card dealt
-        	// shuffle sound plays while we're still drawing random cards for the array
+        	// play shuffle sound while we're drawing random cards for the random card hand
         	// hence, shuffle sound is playing in the RandomCardSet call
         	var RandomCardSet = require('ui/readings/RandomCardSet');
         	var cardSet = new RandomCardSet(numCards);
         	
-			//var timeout = 600; // timeout in milliseconds, this seems to slow
-			var timeout = 500;
-			for (var i = 0; i < numCards; i++)
-			{
-				// make sure you delay long enough for the shuffling to take place
-				//setTimeout(function(){flipSound.play()}, timeout*(i+1));
-			}
+			//var timeout = 600; // timeout in milliseconds, this seems too slow
+			var timeout = 200;
         	var cardLayout = new ReadCardLayout(parentWindow, currentTitle, cardSet, cardDescrips);
         	// wait until shuffling sound is done playing before you open the next window
         	setTimeout(function(){parentWindow.containingTab.open(cardLayout);}, (timeout*numCards));
@@ -81,14 +59,43 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
         scroll.add(view);//add view to scroll
         window.add(scroll);//add scroll to window
     	
-    	/* // This event listener crashed Android
+        return window;
+};
+
+module.exports = ReadDescWindow;
+
+/* old code graveyard: Begin
+ * 
+ * //Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
+		/*
+		var flipSound = Ti.Media.createSound({
+				url: '/audio/CardFlip.mp3',
+				preload: true
+		});
+		*/
+		/*
+		var shuffleSound = Ti.Media.createSound({
+				url: '/audio/CardShuffle.mp3',
+				preload: true,
+				looping: true,
+				allowBackground: true
+		});
+		*/
+		/*
+		for (var i = 0; i < numCards; i++)
+			{
+				// make sure you delay long enough for the shuffling to take place
+				//setTimeout(function(){flipSound.play()}, timeout*(i+1));
+			}
+			*/
+			
+		/* // This event listener crashed Android
         Ti.API.addEventListener('updateDesc',function(e){
             l2.text = e.description;
             l1.text = e.numberCards;
             window.title = e.title;
         });
         */
-        return window;
-};
-
-module.exports = ReadDescWindow;
+/* old code graveyard: ends
+ * 
+ */

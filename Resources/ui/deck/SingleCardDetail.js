@@ -42,7 +42,7 @@ function SingleCardDetail(title, content, image, audio) {
             top:10,
             showVerticalScrollIndicator:true,
             width: '100%',
-            //backgroundImage: 'images/bg-transparent.png',
+            //backgroundImage: '/images/bg-transparent.png',
             //backgroundRepeat: 'true'
         }); //create scroll view
         
@@ -51,7 +51,7 @@ function SingleCardDetail(title, content, image, audio) {
             height: Ti.UI.FILL,
             top:0,
             width: '90%',
-            backgroundImage: 'images/bg-transparent.png',
+            backgroundImage: '/images/bg-transparent.png',
             backgroundRepeat: 'true',
             borderRadius: 10
         });//create view

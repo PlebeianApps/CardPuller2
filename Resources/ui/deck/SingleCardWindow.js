@@ -3,12 +3,14 @@
  */
 function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTransparent)
 {
+	/*
 	var flipSound = Ti.Media.createSound({
 				url: '/audio/CardFlip.mp3',
 				preload: true
 	});
+	*/
 	
-	flipSound.play();
+	//flipSound.play();
 	
 	var TabWindow = require('ui/TabWindow');
 	var window = new TabWindow(windowTitle, imageLoc, 1, 'FALSE');	

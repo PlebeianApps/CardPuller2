@@ -2,8 +2,8 @@ function TabWindow(title, image, opacity, bgrepeat) {
 	
 		var window = Ti.UI.createWindow({
 			title: title,
-			backgroundImage: 'images/bg.png',
-			backgroundRepeat: 'TRUE',
+			backgroundImage: '/images/bg.png',
+			backgroundRepeat: true,
 			barColor: '#272B33'
 		});
 		

@@ -7,8 +7,8 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 	
 	var window = Ti.UI.createWindow({
 			title: color,
-			backgroundImage: 'images/bg.png',
-            backgroundRepeat: 'TRUE',
+			backgroundImage: '/images/bg.png',
+            backgroundRepeat: true,
             barColor: '#272B33',
 			layout: 'vertical'
 		});
@@ -34,14 +34,14 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
            	height: Ti.UI.SIZE,
            	title: 'Info',
            	textAlign: 'center',
-           	left: '30%'
+           	right: '30%'
     	});
     	var cardsButton = Ti.UI.createButton({
     		width: '20%',
            	height: Ti.UI.SIZE,
            	title: 'Cards',
            	textAlign: 'center',
-           	right: '30%'
+           	left: '30%'
     	});
     	infoButton.addEventListener('click', function(e){
     		window.remove(cardsView);
@@ -51,8 +51,8 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
         	window.remove(infoView);
         	window.add(cardsView);
         });
-    	buttonView.add(infoButton);
     	buttonView.add(cardsButton);
+    	buttonView.add(infoButton);
     	window.add(buttonView);
     }
     else if ((platform === 'iphone') || (platform === 'ipad'))

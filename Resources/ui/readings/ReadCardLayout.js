@@ -2,9 +2,10 @@
  * @author Vui Nguyen
  */
 function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
-{
+{			
 	var TabWindow = require('ui/TabWindow');
 	var window = new TabWindow(title);
+	var backOfCard = '/images/BACKOFCARD.png';
 	
 	// logic: based on the title and number of cards, we determine
 	// 1 - how many views to create and display and
@@ -28,7 +29,6 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 	
 	var SingleCardWindow = require('ui/deck/SingleCardWindow');
 	var views = [];
-	//var singleCards = [];
 	for (var i = 0; i < numberCards; i++)
 	{
 		//Ti.API.info('card description is ' + cardDescrips[i]);
@@ -57,13 +57,11 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
             customLocTran: cardLocationsTransparent[i] // these are custom components
 		});
 		
-		//imageView.prototype.customTitle = cardTitles[i];
-		
 		var image = Ti.UI.createImageView({
 			//top: 10,
 			//height: '55%',
 			height: '100%',
-			image: '/images/BACKOFCARD.png'
+			image: backOfCard
 		});
 		imageView.add(image);
 		
@@ -83,10 +81,28 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		Ti.API.info('cardLocations[' + i + ']: ' + cardLocations[i]);
 		Ti.API.info('cardLocationsTransparent[' + i + ']: ' + cardLocationsTransparent[i]);
 		Ti.API.info('\n');
-		imageView.addEventListener('click', function(e){
-			// Playing sounds here crashes Android; Don't do it!
-			//flipSound.play();
-			parentWindow.containingTab.open(new SingleCardWindow(parentWindow, e.source.parent.customTitle, e.source.parent.customLoc, e.source.parent.customLocTran));
+		imageView.addEventListener('longpress', function(e){
+			// if the image is the back of the card, display the front of the card
+			// and remove the "Turn Card" label
+			// otherwise, display a large version of the front of the card
+			if (e.source.parent.children[0].image === backOfCard)
+			{
+				// you must define your sound file in this listener before you
+				// play it, otherwise Android crashes
+				var flipSound = Ti.Media.createSound({
+					url: '/audio/CardFlip.mp3',
+					preload: true
+				});
+				flipSound.play(); 
+				// for some reason, the children views of imageView are the image [0], and label [2];
+				// I have no idea what the mystery middle child view of imageView is: children[1]??
+				e.source.parent.children[0].image = e.source.parent.customLoc; // change the image file
+				e.source.parent.children[2].text = '';        // change the Turn Card label to display no text
+			}
+			else
+			{
+				parentWindow.containingTab.open(new SingleCardWindow(parentWindow, e.source.parent.customTitle, e.source.parent.customLoc, e.source.parent.customLocTran));
+			}
 		});
 		
 		//Ti.API.info('The value of view is ' + view.toString());
