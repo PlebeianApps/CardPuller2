@@ -25,6 +25,12 @@ function DeckList(title) {
 		//var cardDescrips = [e.rowData.card1descrip, e.rowData.card2descrip, e.rowData.card3descrip, e.rowData.card4descrip];
 		//var readings = new ReadDescWindow(window, e.rowData.title, e.rowData.descrip, e.rowData.numberCards, cardDescrips);
 		
+		// This alert pops up before we open the next window, but also when we go back to this window. ugh
+		/*if (Ti.Platform.osname === 'android')
+		{
+			alert('Please wait while cards load...');
+		}*/
+			
 		infoCardsWindow = new DeckInfoCardsWindow(window, e.rowData.title, e.rowData.colorcards, e.rowData.descrip);
 		window.containingTab.open(infoCardsWindow);
 	});

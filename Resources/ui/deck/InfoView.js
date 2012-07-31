@@ -11,7 +11,6 @@ function InfoView(description) {
         
         var view = Ti.UI.createView({
             layout: 'vertical',
-            //height: Ti.UI.FILL,
             height: 'auto',
             top:0
         });//create view

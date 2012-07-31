@@ -2,12 +2,11 @@
  * @author Vui Nguyen
  */
 function CardsView(parentWindow, colorOfCards) {
+		var platform = Ti.Platform.osname; // this will be used later
 	
     	var SingleCardWindow = require('ui/deck/SingleCardWindow');
     	var viewsArray = [];
     	var scrollable = Titanium.UI.createScrollableView({
-  		//views:[mainView, secondView],
-  		//views: viewsarray,
 			showPagingControl: true
 		});
 		
@@ -24,7 +23,6 @@ function CardsView(parentWindow, colorOfCards) {
 			cardTitles.push(cardArray[i].cardName);
 		}
 		
-    	var platform = Ti.Platform.osname; // this will be used later
     	if (cardArray.length > 0)
     	{
     		Ti.API.info('ColorOfCards is: ' + colorOfCards + '. Theres something here');
@@ -38,27 +36,12 @@ function CardsView(parentWindow, colorOfCards) {
     		return scrollable;
     	}
 		
-        var mainView = Ti.UI.createView({
-            layout: 'vertical',
-            height: 'auto',
-            top:0
-        });//create view
-        
-        var secondView = Ti.UI.createView({
-            layout: 'vertical',
-            height: 'auto',
-            top:0
-        });//create view
        
-       
-       //function layoutCards(images)
        function layoutCards()
        {
-       		//var numCards = images.length;
        		var numCards = cardLocations.length;
        		var rowsPerView = 2;
        		var cardsPerRow = 3;
-       		//var view, image, row;
        		var i = 0, j, k;
        		while (i < numCards)
        		{
@@ -67,7 +50,6 @@ function CardsView(parentWindow, colorOfCards) {
             		height: 'auto',
             		top:0
         		}); //create new view for the view array
-        		//while ((j < rowsPerView) && (i < numCards))
         		for (j = 0; j < rowsPerView; j++)
         		{
         			if (i === numCards) { break; }
@@ -79,29 +61,22 @@ function CardsView(parentWindow, colorOfCards) {
         				//height: 200
         				//bottom: 10
         			}); 
-        			//while ((k < cardsPerRow) && (i < numCards))
         			for (k = 0; k < cardsPerRow; k++)
         			{
         				if (i === numCards) { break; }
-        				//var title = cardTitles[i];
-        				//var imageTransparent = cardLocationsTransparent[i];
-        				//var imageLoc = cardLocations[i];
         				var image = Ti.UI.createImageView({
 							width: '30%',
 							//height: Ti.UI.FILL, // this is the line that ensures all images will be
 												  // resized the same on Android
 							//height: '100%',	// this line will only work for iPhone
 							height: (platform === 'android') ? Ti.UI.FILL : '100%',
-							//image: '/images/BACKOFCARD.png',
 							image: cardLocations[i],
 							left: '3%',
 							customTitle: cardTitles[i], // custom property
 							customImageTransparent: cardLocationsTransparent[i] // custom property
-							//opacity: '.5' // let's play with this
 						}); 
 						image.addEventListener('longpress', function(e){
 							parentWindow.containingTab.open(
-								//new SingleCardWindow(parentWindow, title, imageLoc, imageTransparent));
 								new SingleCardWindow(parentWindow, e.source.customTitle, e.source.image, e.source.customImageTransparent));
 						});
         				row.add(image); i++; 
@@ -111,9 +86,8 @@ function CardsView(parentWindow, colorOfCards) {
         		viewsArray.push(view);
        		} // end i < numCards
        		return viewsArray;
-       };
+      }; // end layoutCards
        
-        //scrollable.views = layoutCards(cardLocations);
         scrollable.views = layoutCards();
 		return scrollable;
 };
@@ -121,7 +95,19 @@ function CardsView(parentWindow, colorOfCards) {
 /* More old code here - Begin
  */
 /*
-function createRow(images)
+        var mainView = Ti.UI.createView({
+            layout: 'vertical',
+            height: 'auto',
+            top:0
+        });//create view
+        
+        var secondView = Ti.UI.createView({
+            layout: 'vertical',
+            height: 'auto',
+            top:0
+        });//create view
+       */
+/*function createRow(images)
         {
         	var viewRow = Ti.UI.createView({
         		layout: 'horizontal',

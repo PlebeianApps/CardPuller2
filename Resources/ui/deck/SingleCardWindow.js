@@ -13,7 +13,7 @@ function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTranspare
 	//flipSound.play();
 	
 	var TabWindow = require('ui/TabWindow');
-	var window = new TabWindow(windowTitle, imageLoc, 1, 'FALSE');	
+	var window = new TabWindow(windowTitle, imageLoc, 1, 'false');	
 	var SingleCardList = require('ui/deck/SingleCardList');
 	
 	var image = Ti.UI.createImageView({
@@ -21,7 +21,6 @@ function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTranspare
 		width: '100%'
 	});
 	image.addEventListener('click', function(e) {
-		// have window add another view on top of view
 		parentWindow.containingTab.open(new SingleCardList(parentWindow, windowTitle, imageLocTransparent));
 	});
 	 
