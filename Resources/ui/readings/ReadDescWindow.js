@@ -1,7 +1,7 @@
 function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, cardDescrips) {
     	var ReadCardLayout = require('ui/readings/ReadCardLayout');
     	var TabWindow = require('ui/TabWindow');
-		var window = new TabWindow(currentTitle);
+		var window = new TabWindow(numCards + ' Card Reading');
         
         var scroll =  Ti.UI.createScrollView({
             contentHeight:'auto',
@@ -37,7 +37,7 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
         
         var numberLabel = Titanium.UI.createLabel({
             top: 25,
-            text: numCards + ' Card Reading',
+            text: currentTitle,
             height:Ti.UI.SIZE,
             color:'#616D80',
             font:{fontSize:30},

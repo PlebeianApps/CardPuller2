@@ -44,6 +44,7 @@ CardData.prototype.getReadingsData = function(){
             // Styling attributes, not related to table data
             color: '#616D80',
             selectedBackgroundColor : '#1A1A1A',
+            font:{fontSize:10}
             //height: 'auto', // this line did not crash Android, but didn't seem to work on iphone anyway
             //height: Ti.UI.SIZE, // this line crashed Android
         });

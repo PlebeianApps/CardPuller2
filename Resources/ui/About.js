@@ -13,7 +13,7 @@ function About(title) {
         var view = Ti.UI.createView({
             layout: 'vertical',
             height: Ti.UI.FILL,
-            top:0
+            top:0,
         });//create view
         
         var descripLabel = Titanium.UI.createLabel({
@@ -36,6 +36,16 @@ function About(title) {
            title: 'More by Plebeian Apps',
            width: '100%'
         });//create button
+        
+        buttonTori.addEventListener('click', function(e) {
+            //open link in safari - application will close
+            Titanium.Platform.openURL('http://www.colorwisdomcards.com');
+        });
+        
+        buttonPlebeian.addEventListener('click', function(e) {
+            //open link in safari - application will close
+            Titanium.Platform.openURL('http://itunes.com/plebeianapps');
+        });
         
         view.add(descripLabel);
         view.add(buttonTori);
