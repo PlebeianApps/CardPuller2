@@ -19,7 +19,7 @@ function DeckList(title) {
 		
 	var infoCardsWindow;
 	// Listen for click events.
-	table.addEventListener('click', function(e) {
+	table.addEventListener('touchend', function(e) {
 		// this fireEvent crashed Android
 		//Ti.API.fireEvent('updateDesc',{title: e.rowData.title, description: e.rowData.descrip, numberCards: e.rowData.numberCards});
 		//var cardDescrips = [e.rowData.card1descrip, e.rowData.card2descrip, e.rowData.card3descrip, e.rowData.card4descrip];

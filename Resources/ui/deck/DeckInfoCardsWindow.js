@@ -51,14 +51,14 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
            	textAlign: 'center',
            	left: '30%'
     	});
-    	infoButton.addEventListener('click', function(e){
+    	infoButton.addEventListener('touchend', function(e){
     		//window.remove(cardsView);
         	//window.add(infoView);
         	window.remove(cardsView);
         	infoView = new InfoView(descrip);
         	window.add(infoView);
         });
-        cardsButton.addEventListener('click', function(e){
+        cardsButton.addEventListener('touchend', function(e){
         	//window.remove(infoView);
         	//window.add(cardsView);
 			alert('Please wait while cards load...');
@@ -82,7 +82,7 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
     		width:200,
     		index:0
 		});
-		buttonBar.addEventListener('click', function(e){
+		buttonBar.addEventListener('touchend', function(e){
 			if (e.index === 0)
 			{
 				//window.remove(infoView);

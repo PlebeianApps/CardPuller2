@@ -41,6 +41,7 @@ CardData.prototype.getReadingsData = function(){
             card2descrip: rows.fieldByName("CARD2DESCRIP"),
             card3descrip: rows.fieldByName("CARD3DESCRIP"),
             card4descrip: rows.fieldByName("CARD4DESCRIP"),
+            card5descrip: rows.fieldByName("CARD5DESCRIP"),
             // Styling attributes, not related to table data
             color: '#616D80',
             selectedBackgroundColor : '#1A1A1A',

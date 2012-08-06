@@ -81,7 +81,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		Ti.API.info('cardLocations[' + i + ']: ' + cardLocations[i]);
 		Ti.API.info('cardLocationsTransparent[' + i + ']: ' + cardLocationsTransparent[i]);
 		Ti.API.info('\n');
-		imageView.addEventListener('longpress', function(e){
+		imageView.addEventListener('touchend', function(e){
 			// if the image is the back of the card, display the front of the card
 			// and remove the "Turn Card" label
 			// otherwise, display a large version of the front of the card
