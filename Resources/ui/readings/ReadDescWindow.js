@@ -7,7 +7,8 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
             contentHeight:'auto',
             top:0,
             showVerticalScrollIndicator:true,
-            width: '90%'
+            width: '90%',
+            //textAlign: 'left'
         }); //create scroll view
         
         var view = Ti.UI.createView({

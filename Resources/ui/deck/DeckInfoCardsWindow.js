@@ -41,14 +41,14 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
     		width: '20%',
            	height: Ti.UI.SIZE,
            	title: 'Info',
-           	textAlign: 'center',
+           	textAlign: 'left',
            	right: '30%'
     	});
     	var cardsButton = Ti.UI.createButton({
     		width: '20%',
            	height: Ti.UI.SIZE,
            	title: 'Cards',
-           	textAlign: 'center',
+           	textAlign: 'left',
            	left: '30%'
     	});
     	infoButton.addEventListener('touchend', function(e){

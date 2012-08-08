@@ -21,7 +21,7 @@ function InfoView(description) {
             height:Ti.UI.SIZE,
             color:'#616D80',
             font:{fontSize:16},
-            textAlign:'center'
+            textAlign:'left'
         });//create labels
         
         view.add(descripLabel); 

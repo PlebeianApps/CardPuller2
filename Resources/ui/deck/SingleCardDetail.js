@@ -70,21 +70,21 @@ function SingleCardDetail(title, content, image, audio) {
     			width: '25%',
            		height: Ti.UI.SIZE,
            		title: 'Play',
-           		textAlign: 'center',
+           		textAlign: 'left',
            		left: '5%'
     		});
     		var pauseButton = Ti.UI.createButton({
     			width: '25%',
            		height: Ti.UI.SIZE,
            		title: 'Pause',
-           		textAlign: 'center',
+           		textAlign: 'left',
            		left: '5%'
     		});
     		var resetButton = Ti.UI.createButton({
     			width: '25%',
            		height: Ti.UI.SIZE,
            		title: 'Reset',
-           		textAlign: 'center',
+           		textAlign: 'left',
            		left: '5%'
     		});
     	
