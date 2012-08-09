@@ -58,8 +58,6 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		});
 		
 		var image = Ti.UI.createImageView({
-			//top: 10,
-			//height: '55%',
 			height: '100%',
 			image: backOfCard
 		});
@@ -67,11 +65,8 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		
 		var imageLabel = Ti.UI.createLabel({
 			color: 'black',
-			//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			//textAlign: 'center',
 			text: 'Turn Card',
 			font: { fontSize:22 },
-			//width: Ti.UI.FILL
 		});
 		
 		imageView.add(image);
@@ -81,7 +76,8 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		Ti.API.info('cardLocations[' + i + ']: ' + cardLocations[i]);
 		Ti.API.info('cardLocationsTransparent[' + i + ']: ' + cardLocationsTransparent[i]);
 		Ti.API.info('\n');
-		imageView.addEventListener('touchend', function(e){
+		// this used to be longpress instead of click, why the change back?
+		imageView.addEventListener('click', function(e){
 			// if the image is the back of the card, display the front of the card
 			// and remove the "Turn Card" label
 			// otherwise, display a large version of the front of the card
@@ -108,13 +104,11 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		//Ti.API.info('The value of view is ' + view.toString());
 		var descripLabel = Ti.UI.createLabel({
 			top: 10,
-			//color: 'black',
 			color: '#616D80',
 			textAlign: 'center',
 			text: cardDescrips[i]
 		});
 		view.add(numberLabel);
-		//view.add(image);
 		view.add(imageView);
 		view.add(descripLabel);
 		views.push(view);

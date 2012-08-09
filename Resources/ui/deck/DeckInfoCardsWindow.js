@@ -2,9 +2,6 @@
  * @author Vui Nguyen
  */
 function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
-	//var TabWindow = require('ui/TabWindow');
-	//var window = new TabWindow(title);
-	
 	var window = Ti.UI.createWindow({
 			title: color,
 			backgroundImage: '/images/bg.png',
@@ -51,17 +48,13 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
            	textAlign: 'left',
            	left: '30%'
     	});
-    	infoButton.addEventListener('touchend', function(e){
-    		//window.remove(cardsView);
-        	//window.add(infoView);
+    	infoButton.addEventListener('click', function(e){
         	window.remove(cardsView);
         	infoView = new InfoView(descrip);
         	window.add(infoView);
         });
-        cardsButton.addEventListener('touchend', function(e){
-        	//window.remove(infoView);
-        	//window.add(cardsView);
-			alert('Please wait while cards load...');
+        cardsButton.addEventListener('click', function(e){
+        	alert('Please wait while cards load...');
         	window.remove(infoView);
         	cardsView = new CardsView(parentWindow, color);
         	window.add(cardsView);
@@ -82,19 +75,16 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
     		width:200,
     		index:0
 		});
-		buttonBar.addEventListener('touchend', function(e){
+		//buttonBar.addEventListener('touchend', function(e){ // this doesn't work on Android or iphone
+		buttonBar.addEventListener('click', function(e) {
 			if (e.index === 0)
 			{
-				//window.remove(infoView);
-        		//window.add(cardsView);
         		window.remove(infoView);
         		cardsView = new CardsView(parentWindow, color);
         		window.add(cardsView);
 			}
 			else
 			{
-				//window.remove(cardsView);
-        		//window.add(infoView);
         		window.remove(cardsView);
         		infoView = new InfoView(descrip);
         		window.add(infoView);
@@ -103,7 +93,14 @@ function DeckInfoCardsWindow(parentWindow, colorGroupName, color, descrip) {
 		window.add(buttonBar);
     }
     
-    window.add(cardsView);
+    if (platform === 'android')
+	{
+		window.add(infoView);
+	}	
+	else
+	{ 
+    	window.add(cardsView);
+   	}
     return window;
 };
 

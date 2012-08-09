@@ -33,7 +33,7 @@ function SingleCardList(parentWindow, title, image) {
 		
 	var infoCardsWindow;
 	// Listen for click events.
-	table.addEventListener('touchend', function(e) {
+	table.addEventListener('click', function(e) {
 		// note: don't use fireEvents here. They crash Android
 		//Ti.API.fireEvent('updateDesc',{title: e.rowData.title, description: e.rowData.descrip, numberCards: e.rowData.numberCards});
 		singleCardDetail = new SingleCardDetail(e.rowData.title, e.rowData.content, image, e.rowData.audio);	
