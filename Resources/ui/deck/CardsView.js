@@ -75,8 +75,9 @@ function CardsView(parentWindow, colorOfCards) {
 							customTitle: cardTitles[i], // custom property
 							customImageTransparent: cardLocationsTransparent[i] // custom property
 						}); 
-						// this used to be a longpress event instead of click, why the change back?
-						image.addEventListener('click', function(e){
+						// longpress is here so you can't accidentally turn over a card while
+						// scrolling through the views
+						image.addEventListener('longpress', function(e){
 							parentWindow.containingTab.open(
 								new SingleCardWindow(parentWindow, e.source.customTitle, e.source.image, e.source.customImageTransparent));
 						});
