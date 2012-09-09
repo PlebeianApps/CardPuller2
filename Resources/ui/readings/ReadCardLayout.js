@@ -65,8 +65,10 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		
 		var imageLabel = Ti.UI.createLabel({
 			color: 'black',
-			text: 'Turn Card',
-			font: { fontSize:22 },
+			text: 'Press and Hold to do things',
+			width: '40%',
+			textAlign: 'center',
+			font: { fontSize:18 },
 		});
 		
 		imageView.add(image);
