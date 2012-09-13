@@ -77,7 +77,7 @@ function CardsView(parentWindow, colorOfCards) {
 						}); 
 						// longpress is here so you can't accidentally turn over a card while
 						// scrolling through the views
-						image.addEventListener('longpress', function(e){
+						image.addEventListener('touchend', function(e){
 							parentWindow.containingTab.open(
 								new SingleCardWindow(parentWindow, e.source.customTitle, e.source.image, e.source.customImageTransparent));
 						});

@@ -16,6 +16,7 @@ function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTranspare
 	var window = new TabWindow(windowTitle, imageLoc, 1, 'false');	
 	var SingleCardList = require('ui/deck/SingleCardList');
 	
+	
 	var image = Ti.UI.createImageView({
 		height: '100%',
 		width: '100%'

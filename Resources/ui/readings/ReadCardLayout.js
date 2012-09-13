@@ -63,16 +63,17 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		});
 		imageView.add(image);
 		
-		var imageLabel = Ti.UI.createLabel({
+		/*var imageLabel = Ti.UI.createLabel({
 			color: 'black',
 			text: 'Press and Hold to do things',
 			width: '40%',
 			textAlign: 'center',
 			font: { fontSize:18 },
 		});
+		*/
 		
 		imageView.add(image);
-		imageView.add(imageLabel);
+		//imageView.add(imageLabel);
 		
 		Ti.API.info('cardTitle[' + i + ']: ' + cardTitles[i]);
 		Ti.API.info('cardLocations[' + i + ']: ' + cardLocations[i]);
@@ -80,7 +81,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		Ti.API.info('\n');
 		// longpress is here so you can't accidentally turn over a card while
 		// scrolling through the card reading layout
-		imageView.addEventListener('longpress', function(e){
+		imageView.addEventListener('touchend', function(e){
 			// if the image is the back of the card, display the front of the card
 			// and remove the "Turn Card" label
 			// otherwise, display a large version of the front of the card

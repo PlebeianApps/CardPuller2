@@ -145,7 +145,8 @@ function SingleCardDetail(title, content, image, audio) {
         top: 10,
         width: '90%',
         backgroundColor: 'transparent',
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        bottom: 50
         //textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 	});
 	

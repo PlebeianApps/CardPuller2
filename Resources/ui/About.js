@@ -14,6 +14,7 @@ function About(title) {
             layout: 'vertical',
             height: Ti.UI.FILL,
             top:0,
+            bottom: 50
         });//create view
         
         var descripLabel = Titanium.UI.createLabel({
