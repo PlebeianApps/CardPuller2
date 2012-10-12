@@ -19,7 +19,7 @@ function ReadList(title) {
 		table.addEventListener('click', function(e) {
 			// this fireEvent crashed Android
 			//Ti.API.fireEvent('updateDesc',{title: e.rowData.title, description: e.rowData.descrip, numberCards: e.rowData.numberCards});
-			var cardDescrips = [e.rowData.card1descrip, e.rowData.card2descrip, e.rowData.card3descrip, e.rowData.card4descrip];
+			var cardDescrips = [e.rowData.card1descrip, e.rowData.card2descrip, e.rowData.card3descrip, e.rowData.card4descrip, e.rowData.card5descrip];
 			var readings = new ReadDescWindow(window, e.rowData.title, e.rowData.descrip, e.rowData.numberCards, cardDescrips);
 			window.containingTab.open(readings);
 		});
