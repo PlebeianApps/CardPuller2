@@ -3,6 +3,11 @@
  */
 
 function CardData() {
+		this.sectionTitles = ['Color Definition', 'The Fable', 'Inspiration', 'Meditation', 
+							'Connect with Yourself', 'Connect With Yourself',
+							'Connect with Others', 'Connect With Others',
+							'Connect with Yourself or Others'];
+	
 		//this.db = Ti.Database.open('cardDb'); //create database //open database
 		//this.db.remove();
 		//this.db = Ti.Database.install('/db/cardDb.sqlite', 'cardDb');
@@ -119,20 +124,26 @@ CardData.prototype.getSingleCardData = function(cardName) {
 	this.db = Ti.Database.open('cardDb'); //open database
     //get data
     //var rows = this.db.execute('SELECT * FROM CARDSECTIONS WHERE CARDNAME = ? LIMIT 1', cardName);
-    var rows = this.db.execute('SELECT * FROM CARDSECTIONS WHERE CARDNAME = ?', cardName);
+    //var rows = this.db.execute('SELECT * FROM CARDSECTIONS WHERE CARDNAME = ?', cardName);
     var data = [];
-    while(rows.isValidRow()) {
-        data.push({
-            id: rows.fieldByName("ID"),
-            title: rows.fieldByName("SECTIONTITLE"),
-            content: rows.fieldByName("SECTIONCONTENT"),
-            audio: rows.fieldByName("SECTIONAUDIO"),
-            color: 'black',
-            backgroundColor: 'transparent',
-            // add an icon to this row only if there's a valid sound file
-            rightImage: (rows.fieldByName("SECTIONAUDIO") != 'Buy Now') ? '/images/info.png' : ''
-        });
+    var numberSectionTitles = this.sectionTitles.length;
+    for (var i = 0; i < numberSectionTitles; i++)
+    {
+    	var rows = this.db.execute('SELECT * FROM CARDSECTIONS WHERE CARDNAME = ? AND SECTIONTITLE = ?', cardName,
+    								this.sectionTitles[i]);
+    	while(rows.isValidRow()) {
+        	data.push({
+            	id: rows.fieldByName("ID"),
+            	title: rows.fieldByName("SECTIONTITLE"),
+            	content: rows.fieldByName("SECTIONCONTENT"),
+            	audio: rows.fieldByName("SECTIONAUDIO"),
+            	color: 'black',
+            	backgroundColor: 'transparent',
+            	// add an icon to this row only if there's a valid sound file
+            	rightImage: (rows.fieldByName("SECTIONAUDIO") != 'Buy Now') ? '/images/info.png' : ''
+        	});
         rows.next();
+    	}
     }
     this.db.close();
     return data; //return data
@@ -141,6 +152,19 @@ CardData.prototype.getSingleCardData = function(cardName) {
 CardData.prototype.getDeckSize = function() {
 	this.db = Ti.Database.open('cardDb');
 	var rows = this.db.execute('SELECT COUNT(*) AS NUMCARDS FROM CARDS');
+	var data = [];
+	while(rows.isValidRow())
+	{
+		data.push(rows.fieldByName("NUMCARDS"));
+		rows.next();
+	}
+	this.db.close();
+	return data;
+};
+
+CardData.prototype.isIdValid = function(inputId) {
+	this.db = Ti.Database.open('cardDb');
+	var rows = this.db.execute('SELECT COUNT(*) AS NUMCARDS FROM CARDS WHERE ID = ?', inputId);
 	var data = [];
 	while(rows.isValidRow())
 	{

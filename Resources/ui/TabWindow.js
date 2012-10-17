@@ -7,6 +7,8 @@ function TabWindow(title, image, opacity, bgrepeat) {
 			barColor: '#272B33'
 		});
 		
+		this.sharedWindow = window;
+		
 		if (bgrepeat){
 		    window.setBackgroundRepeat(bgrepeat);
 		}
@@ -22,4 +24,8 @@ function TabWindow(title, image, opacity, bgrepeat) {
 		return window;
 };
 
+TabWindow.prototype.addLeftNavButton = function(button)
+{
+	this.sharedWindow.setLeftNavButton(button);
+};
 module.exports = TabWindow;

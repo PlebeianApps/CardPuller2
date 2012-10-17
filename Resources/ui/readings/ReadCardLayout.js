@@ -4,7 +4,7 @@
 function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 {			
 	var TabWindow = require('ui/TabWindow');
-	var window = new TabWindow(title);
+	var window = new TabWindow(title);	
 	var backOfCard = '/images/BACKOFCARD.png';
 	
 	// logic: based on the title and number of cards, we determine
@@ -19,12 +19,14 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
     var cardLocations = [];
     var cardLocationsTransparent = [];
     var cardTitles = [];
+    var cardTurned = []; // 0 is not turned, 1 is turned
 	for (var i = 0; i < cardArray.length; i++)
 	{
 		//Ti.API.info('value of cardImage is ' + cardArray[i].cardLoc);
 		cardLocations.push(cardArray[i].cardLoc);
 		cardLocationsTransparent.push(cardArray[i].cardLocTransparent);
 		cardTitles.push(cardArray[i].cardName);
+		cardTurned.push(0);
 	}
 	
 	var SingleCardWindow = require('ui/deck/SingleCardWindow');
@@ -54,7 +56,8 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 			height: '55%',
 			customTitle: cardTitles[i], // these are custom components
             customLoc: cardLocations[i], // these are custom components
-            customLocTran: cardLocationsTransparent[i] // these are custom components
+            customLocTran: cardLocationsTransparent[i], // these are custom components
+            customCardPosition: i // these are custom components
 		});
 		
 		var image = Ti.UI.createImageView({
@@ -97,7 +100,10 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 				// for some reason, the children views of imageView are the image [0], and label [2];
 				// I have no idea what the mystery middle child view of imageView is: children[1]??
 				e.source.parent.children[0].image = e.source.parent.customLoc; // change the image file
-				e.source.parent.children[2].text = '';        // change the Turn Card label to display no text
+				//e.source.parent.children[2].text = '';        // change the Turn Card label to display no text
+				var position = e.source.parent.customCardPosition;
+				//Ti.API.info('customCardPosition: ' + position);
+				cardTurned[position] = 1;
 			}
 			else
 			{
@@ -124,6 +130,54 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 	});
 	window.add(scrollable);
 	
+	var dialog = Ti.UI.createAlertDialog({
+		buttonNames: ['Cancel', 'Yes'],
+		message: 'Not all cards turned over.\nGo back?',
+		title: 'Go back a window'
+	});
+	dialog.addEventListener('click', function(e) {
+			if (e.index === 1)
+				{ window.close(); }
+	});
+	
+	if (Ti.Platform.osname === 'iphone' || 'ipad')
+	{
+		var backButton = Ti.UI.createButton({
+			title : numberCards + ' Card Reading',
+			height : 50,
+			width : 100,
+		});
+	
+		backButton.addEventListener('click', function() {
+			if (checkAllCardsTurned() == false)
+			{ dialog.show();}
+			else
+			{ window.close();}
+		});
+		window.setLeftNavButton(backButton);
+	}	// if platform is iphone or ipad
+	// Note: Do NOT wrap this event listener within an else if (Ti.Platform.osname === 'android'), 
+	// it will screw up Android
+	window.addEventListener('android:back', function(e) {
+		if (checkAllCardsTurned() == false)
+		{ dialog.show();}
+		else
+		{ window.close();}
+	});
+	
+	function checkAllCardsTurned()
+	{
+		var allCardsTurned = true;
+		for (var i = 0; i < numberCards; i++)
+		{
+			if (cardTurned[i] === 0)
+			{
+				allCardsTurned = false;
+				break;
+			}
+		}
+		return allCardsTurned;
+	}
 	return window;
 };
 

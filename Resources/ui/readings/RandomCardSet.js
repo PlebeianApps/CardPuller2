@@ -17,7 +17,8 @@ function RandomCardSet(numCardsPulled)
 	flipSound.play();
 	
 	var CardData = require('db/CardData');
-	var deckSize = new CardData().getDeckSize();
+	var cardData = new CardData();
+	var deckSize = cardData.getDeckSize();
 	var cardSet = [];
 	
 	var deck = [];
@@ -34,7 +35,12 @@ function RandomCardSet(numCardsPulled)
 	{
 		// this will select a random number from 1 through the current deck size
 		// ceil() function ensures that 0 will never be selected
-		var randomNumber = Math.ceil(Math.random()*maxNumber); 
+		var randomNumber = Math.ceil(Math.random()*maxNumber);
+		// this checks to make sure we don't grab an index that doesn't exist in the Cards table
+		while (cardData.isIdValid(randomNumber) === 0)
+		{
+			randomNumber = Math.ceil(Math.random()*maxNumber); 
+		}
 		//var randomNumber = Math.floor(Math.random()*maxNumber);
 		//var randomNumber = Math.round(Math.random()*maxNumber);
 		return randomNumber;
