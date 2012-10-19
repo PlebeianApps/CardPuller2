@@ -42,7 +42,7 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
             height:Ti.UI.SIZE,
             color:'#616D80',
             font:{fontSize:30},
-            textAlign:'center'
+            textAlign:'left'
         });
         
         var descripLabel = Titanium.UI.createLabel({
@@ -51,7 +51,7 @@ function ReadDescWindow(parentWindow, currentTitle, currentDescrip, numCards, ca
             height:Ti.UI.SIZE,
             color:'#616D80',
             font:{fontSize:16},
-            textAlign:'center'
+            textAlign:'left'
         });//create labels
         
         view.add(numberLabel);

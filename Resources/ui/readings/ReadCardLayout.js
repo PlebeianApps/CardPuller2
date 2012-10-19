@@ -132,8 +132,8 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 	
 	var dialog = Ti.UI.createAlertDialog({
 		buttonNames: ['Cancel', 'Yes'],
-		message: 'Not all cards turned over.\nGo back?',
-		title: 'Go back a window'
+		message: 'Some cards remain facedown.\nClick "yes" to re-draw.',
+		title: 'Re-Draw?'
 	});
 	dialog.addEventListener('click', function(e) {
 			if (e.index === 1)
@@ -143,7 +143,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 	if (Ti.Platform.osname === 'iphone' || 'ipad')
 	{
 		var backButton = Ti.UI.createButton({
-			title : numberCards + ' Card Reading',
+			title : 'Re-Draw',
 			height : 50,
 			width : 100,
 		});
