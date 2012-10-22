@@ -132,7 +132,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 	
 	var dialog = Ti.UI.createAlertDialog({
 		buttonNames: ['Cancel', 'Yes'],
-		message: 'Some cards remain facedown.\nClick "yes" to re-draw.',
+		message: 'Some cards remain facedown.\nClick "yes" to re-draw. "Cancel" and swipe left or right to view the rest of your reading.',
 		title: 'Re-Draw?'
 	});
 	dialog.addEventListener('click', function(e) {
