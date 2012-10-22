@@ -35,12 +35,15 @@ function RandomCardSet(numCardsPulled)
 	{
 		// this will select a random number from 1 through the current deck size
 		// ceil() function ensures that 0 will never be selected
-		var randomNumber = Math.ceil(Math.random()*maxNumber);
+		//var randomNumber = Math.ceil(Math.random()*maxNumber);
+		var randomNumber;
 		// this checks to make sure we don't grab an index that doesn't exist in the Cards table
-		while (cardData.isIdValid(randomNumber) === 0)
+		do 
 		{
-			randomNumber = Math.ceil(Math.random()*maxNumber); 
-		}
+			randomNumber = Math.ceil(Math.random()*maxNumber);
+			Ti.API.info('Got into while - randomNumber is ' + randomNumber); 
+		} while (cardData.isIdValid(randomNumber) == 0) // Note: you must use == and NOT === or else this test doesn't work!
+		Ti.API.info('Got out of while');
 		//var randomNumber = Math.floor(Math.random()*maxNumber);
 		//var randomNumber = Math.round(Math.random()*maxNumber);
 		return randomNumber;
