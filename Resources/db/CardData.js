@@ -129,6 +129,7 @@ CardData.prototype.getSingleCardData = function(cardName) {
     var numberSectionTitles = this.sectionTitles.length;
     for (var i = 0; i < numberSectionTitles; i++)
     {
+    	var platform = Ti.Platform.osname;
     	var rows = this.db.execute('SELECT * FROM CARDSECTIONS WHERE CARDNAME = ? AND SECTIONTITLE = ?', cardName,
     								this.sectionTitles[i]);
     	while(rows.isValidRow()) {
@@ -140,7 +141,8 @@ CardData.prototype.getSingleCardData = function(cardName) {
             	color: 'black',
             	backgroundColor: 'transparent',
             	// add an icon to this row only if there's a valid sound file
-            	rightImage: (rows.fieldByName("SECTIONAUDIO") != 'Buy Now') ? '/images/info.png' : ''
+            	rightImage: ( (rows.fieldByName("SECTIONAUDIO") != 'Buy Now') && 
+            	((platform ==='iphone') || (platform === 'ipad')) ) ? '/images/info.png' : ''
         	});
         rows.next();
     	}

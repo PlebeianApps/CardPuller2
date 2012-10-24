@@ -18,7 +18,7 @@ function SingleCardWindow(parentWindow, windowTitle, imageLoc, imageLocTranspare
 	
 	
 	var image = Ti.UI.createImageView({
-		height: '100%',
+		height: '100%', // This is where we adjust sizing for the CardView
 		width: '100%'
 	});
 	image.addEventListener('click', function(e) {

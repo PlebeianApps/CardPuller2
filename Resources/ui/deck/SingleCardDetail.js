@@ -5,10 +5,11 @@ function SingleCardDetail(title, content, image, audio) {
     // check to see if the sound file is "Buy Now", if it is, continue with the rest of the 
     // sound player stuff; If not, skip the sound player stuff
     var soundFileAvail = false;
-    if (audio != 'Buy Now')
+    var platform = Ti.Platform.osname; 
+    if ( (audio != 'Buy Now') && ((platform === 'iphone') || (platform === 'ipad')) )
     {	
     	soundFileAvail = true;
-    } 
+    }
     
     var sound;
     
@@ -55,8 +56,7 @@ function SingleCardDetail(title, content, image, audio) {
         });//create view
     
     if (soundFileAvail)
-    {
-    	var platform = Ti.Platform.osname;   
+    {  
     	if (platform === 'android')
     	{
     		// create regular buttons
