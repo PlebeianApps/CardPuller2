@@ -35,21 +35,26 @@ function RandomCardSet(numCardsPulled)
 	{
 		// this will select a random number from 1 through the current deck size
 		// ceil() function ensures that 0 will never be selected
-		//var randomNumber = Math.ceil(Math.random()*maxNumber);
 		var randomNumber;
 		// this checks to make sure we don't grab an index that doesn't exist in the Cards table
+		// There's two places where we must check for an invalid index
+		// 1 - the indices of the card deck (randomNum), 
+		// AND the index that the card deck index points to (deck[randomNum]);
+		// This is because the deck shrinks as we pull indices out but we are keeping the invalid indices
+		// in the deck that we're pulling random numbers from
 		do 
 		{
 			randomNumber = Math.ceil(Math.random()*maxNumber);
 			Ti.API.info('Got into while - randomNumber is ' + randomNumber); 
-		} while (cardData.isIdValid(randomNumber) == 0) // Note: you must use == and NOT === or else this test doesn't work!
+			Ti.API.info('Got into while - deck[randomNumber] is ' + deck[randomNumber]);
+		} while ( (cardData.isIdValid(randomNumber) == 0) || (cardData.isIdValid(deck[randomNumber]) == 0) ) 
+		// Note: you must use == and NOT === or else this test doesn't work!
 		Ti.API.info('Got out of while');
 		//var randomNumber = Math.floor(Math.random()*maxNumber);
 		//var randomNumber = Math.round(Math.random()*maxNumber);
 		return randomNumber;
 	}
 	
-	//var largestIndex = deckSize;
 	var randomNum;
 	var largestIndex = deck.length - 1; // This is weird, but the array always starts at the 
 	                                    // index 0 even if it's undefined, so subtract one
@@ -59,7 +64,7 @@ function RandomCardSet(numCardsPulled)
 			randomNum = randomCard(largestIndex);
 			Ti.API.info('length of deck BEFORE is ' + largestIndex);
 			Ti.API.info('Random Card is: ' + randomNum + '\n');
-			Ti.API.info('VALUE AT RANDOM CARD INDEX IS                  ' + deck[randomNum] + '\n');
+			Ti.API.info('VALUE AT RANDOM CARD INDEX IS                  ' + deck[randomNum] + '\n'); 
 			cardSet.push(deck[randomNum]);
 			deck.splice(randomNum, 1);
 			largestIndex = largestIndex - 1;

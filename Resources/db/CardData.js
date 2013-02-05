@@ -153,7 +153,10 @@ CardData.prototype.getSingleCardData = function(cardName) {
 
 CardData.prototype.getDeckSize = function() {
 	this.db = Ti.Database.open('cardDb');
-	var rows = this.db.execute('SELECT COUNT(*) AS NUMCARDS FROM CARDS');
+	//var rows = this.db.execute('SELECT COUNT(*) AS NUMCARDS FROM CARDS');
+	// the command below will give us the largest index instead of the max number of rows
+	// this is an important distinction because we have fewer cards than the largest index #
+	var rows = this.db.execute('SELECT MAX(ID) AS NUMCARDS FROM CARDS');
 	var data = [];
 	while(rows.isValidRow())
 	{
@@ -161,6 +164,7 @@ CardData.prototype.getDeckSize = function() {
 		rows.next();
 	}
 	this.db.close();
+	//Ti.API.info('CardData:getDeckSize, size is ' + data);
 	return data;
 };
 
@@ -174,6 +178,8 @@ CardData.prototype.isIdValid = function(inputId) {
 		rows.next();
 	}
 	this.db.close();
+	
+	Ti.API.info('CardData:isIdValid, data is ' + data);
 	return data;
 };
 
