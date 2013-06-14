@@ -43,7 +43,7 @@ function ReadCardLayout(parentWindow, title, cardSet, cardDescrips)
 		});
 		
 		var cardNum = i + 1;
-		var numberLabel = Ti.UI.createLabel({
+		var numberLabel = Ti.UI.createLabel( {
 			top: 10,
 			//color: 'black',
 			color: '#616D80',
